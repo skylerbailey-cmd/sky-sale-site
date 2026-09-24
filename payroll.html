@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Commission payroll — SkySale</title>
+<meta name="description" content="How SkySale builds a paycheck: per-person commission plans, returns counted to the month they sold in, disputes held rather than lost, and a shortfall that carries to the next payday exactly once.">
+<link rel="canonical" href="https://sky-sale.com/payroll.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sky-sale.com/payroll.html">
+<meta property="og:site_name" content="SkySale">
+<meta property="og:title" content="Commission payroll — SkySale">
+<meta property="og:description" content="Every figure on a paycheck traces back to the receipts that produced it.">
+<meta property="og:image" content="https://sky-sale.com/assets/commissions.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sky-sale.com/assets/commissions.png">
+<meta name="theme-color" content="#07090C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap masthead">
+    <a href="/" class="logo">Sky<span>Sale</span></a>
+    <nav>
+      <a class="opt" href="payroll.html" aria-current="page">Payroll</a>
+      <a class="opt" href="follow-up.html">Follow-up</a>
+      <a class="opt" href="reconciliation.html">Reconciling</a>
+      <a class="opt" href="bookings.html">Bookings</a>
+      <a class="btn btn-ghost btn-sm" href="https://app.sky-sale.com/">Sign in</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">01 — Payroll</p>
+      <h1>Every figure traces back to&nbsp;a&nbsp;receipt.</h1>
+      <p class="lede">
+        A commission run is arithmetic anyone can do and almost nobody can
+        check. This one shows its working: click any total and the
+        transactions inside it open.
+      </p>
+    </div>
+  </section>
+
+  <section class="rule-top">
+    <div class="wrap">
+      <figure class="reveal">
+        <img src="assets/commissions.png" width="1010" height="682" loading="lazy"
+             alt="The commissions report: each person's sales, net sales, chargebacks and commission for a pay period, with a dispute held back from the upcoming paycheck.">
+        <figcaption>
+          <b>What everyone is owed, and why.</b> Sales and commission per person for the
+          period, then the two lines that make it a paycheck rather than a total: what was
+          earned, and what is being held while a dispute is open.
+          <span class="demo">A demonstration store. The staff, customers and figures are invented.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="rule-top">
+    <div class="wrap">
+      <div class="sec-head narrow reveal">
+        <p class="eyebrow">How a cheque is built</p>
+        <h2>Six things happen between the sale and the payment.</h2>
+      </div>
+      <dl class="spec stagger">
+        <div class="spec-row">
+          <dt>Sales are credited to people, not tills</dt>
+          <dd>
+            A sale can be split across several staff at percentages you choose, and the
+            split is stored on the transaction — so a correction made later moves the
+            commission with it rather than leaving the two to disagree.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>Each person has their own plan</dt>
+          <dd>
+            A flat rate, or a rate that changes above a threshold. Set per person, not
+            per shop, because the person who sells the devices rarely earns the same as
+            the person who sells the serums.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>Returns come off the cheque that paid them</dt>
+          <dd>
+            A return counts against the day the item <em>sold</em>. If the cheque that paid
+            its commission is still open, it simply reduces net sales. If that cheque has
+            already gone out, it becomes a visible deduction on the next one — once.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>Disputes are held, not lost</dt>
+          <dd>
+            Money in dispute comes off the open cheque and is remembered, so it can't be
+            taken a second time. Won, it's released back. Lost, it stays gone. And a human
+            can mark one as already settled elsewhere, which happens more than anyone
+            would like.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>A shortfall carries, exactly once</dt>
+          <dd>
+            A cheque that lands below zero pays nothing, and the amount moves to the very
+            next payday as a single carried line. Not by repeating the deductions behind
+            it — that double-counts, and it is the single easiest way to underpay somebody
+            by a thousand dollars.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>One person, one cheque</dt>
+          <dd>
+            Staff working across several shops have a record at each and a single payment.
+            The shortfall is judged on the combined total, and marking them paid closes
+            every record at once.
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="rule-top">
+    <div class="wrap">
+      <div class="sec-head narrow reveal">
+        <p class="eyebrow">Who sees what</p>
+        <h2>Staff see themselves. Managers see everyone.</h2>
+      </div>
+      <dl class="spec stagger">
+        <div class="spec-row">
+          <dt>Name and PIN, every time</dt>
+          <dd>
+            Anyone can look up their own sales and commission at the till by entering
+            their name and PIN. The screen re-locks when they leave it, so the next
+            person can't read what the last one was looking at.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>Three roles</dt>
+          <dd>
+            Sales sees their own figures. Manager and admin see the full roster, the
+            payroll run and the reports behind it.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>Paydays are yours</dt>
+          <dd>
+            Semi-monthly on the 1st and 15th, fortnightly, or whatever you already run —
+            each payday covering the period that closed before it, in arrears.
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="rule-top">
+    <div class="wrap">
+      <div class="closer reveal">
+        <p class="eyebrow">Get in touch</p>
+        <h2 style="margin-block:16px 18px">Bring us your messiest pay period.</h2>
+        <p class="lede">
+          Walk through a fortnight you've already run — returns, disputes, split sales
+          and all — and see whether the numbers come out where you put them.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="mailto:skylerbaileyconsulting@gmail.com?subject=SkySale%20payroll">Email us</a>
+          <a class="btn btn-ghost" href="follow-up.html">Next: the follow-up</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><span class="logo">Sky<span>Sale</span></span> &nbsp;·&nbsp; Point of sale &amp; commission payroll</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="follow-up.html">Follow-up</a>
+      <a href="reconciliation.html">Reconciling</a>
+      <a href="bookings.html">Bookings</a>
+      <a href="mailto:skylerbaileyconsulting@gmail.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

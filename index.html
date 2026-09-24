@@ -2,687 +2,257 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Without this the page renders at desktop width on a phone, zoomed out to
-     illegibility — which is where half of anyone's first look comes from. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SkySale — point of sale and commission payroll</title>
-<meta name="description" content="A point-of-sale and CRM for high-ticket specialty retail. Rings up the sale, then gets the commission and payroll behind it right — returns counted to the month they sold in, disputes held, shortfalls carried forward.">
+<meta name="description" content="A point-of-sale and CRM for high-ticket specialty retail. It rings up the sale, then gets the paycheck behind it right — returns counted to the month they sold in, disputes held, shortfalls carried forward.">
 <link rel="canonical" href="https://sky-sale.com/">
 
-<!-- What a shared link looks like in a message, a post or a search result. -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sky-sale.com/">
 <meta property="og:site_name" content="SkySale">
 <meta property="og:title" content="SkySale — point of sale and commission payroll">
-<meta property="og:description" content="Any register can take the money. Ours can tell you who earned it.">
+<meta property="og:description" content="Any register can take the money. Ours knows who earned it.">
 <meta property="og:image" content="https://sky-sale.com/assets/commissions.png">
 <meta property="og:image:width" content="1010">
 <meta property="og:image:height" content="682">
-<meta property="og:image:alt" content="The commissions report: each person's sales and commission for a pay period, with a dispute held from the upcoming paycheck.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SkySale — point of sale and commission payroll">
-<meta name="twitter:description" content="Any register can take the money. Ours can tell you who earned it.">
+<meta name="twitter:description" content="Any register can take the money. Ours knows who earned it.">
 <meta name="twitter:image" content="https://sky-sale.com/assets/commissions.png">
-<meta name="theme-color" content="#0F4C81">
+<meta name="theme-color" content="#07090C">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-<style>
-  :root {
-    /* Ledger palette: ink on paper, the register's own blue, and accounting's
-       two semantic colours — money in, money back out. */
-    --ink:        #10243A;
-    --ink-soft:   #2C4257;
-    --paper:      #FAFAF7;
-    --paper-2:    #F1F0EA;
-    --rule:       #D8D6CC;
-    --slate:      #5A7183;
-    --blue:       #1F6FB2;
-    --blue-deep:  #0F4C81;
-    --blue-wash:  #E7F0F8;
-    --credit:     #1E6B4F;
-    --debit:      #A8323C;
-    --shadow:     0 1px 2px rgba(16,36,58,.06), 0 8px 24px -12px rgba(16,36,58,.18);
-
-    --display: 'Newsreader', Georgia, 'Times New Roman', serif;
-    --body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --ink:        #ECEFF3;
-      --ink-soft:   #B9C6D2;
-      --paper:      #0D1822;
-      --paper-2:    #142333;
-      --rule:       #2A3C4E;
-      --slate:      #8CA1B4;
-      --blue:       #6FAEE0;
-      --blue-deep:  #A8CDEC;
-      --blue-wash:  #17293A;
-      --credit:     #5FBE93;
-      --debit:      #E4848D;
-      --shadow:     0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
-    }
-  }
-  :root[data-theme="dark"] {
-    --ink:        #ECEFF3;
-    --ink-soft:   #B9C6D2;
-    --paper:      #0D1822;
-    --paper-2:    #142333;
-    --rule:       #2A3C4E;
-    --slate:      #8CA1B4;
-    --blue:       #6FAEE0;
-    --blue-deep:  #A8CDEC;
-    --blue-wash:  #17293A;
-    --credit:     #5FBE93;
-    --debit:      #E4848D;
-    --shadow:     0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
-  }
-
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--body);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  .wrap { max-width: 1060px; margin: 0 auto; padding-inline: 24px; }
-
-  h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; margin: 0; line-height: 1.15; }
-  p { margin: 0; }
-  a { color: inherit; }
-
-  .eyebrow {
-    font-family: var(--mono); font-size: .72rem; font-weight: 500;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--slate);
-  }
-  .lede { font-size: 1.12rem; color: var(--ink-soft); max-width: 62ch; }
-  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
-
-  /* ── Masthead ─────────────────────────────────────────────────────── */
-  header {
-    border-bottom: 1px solid var(--rule);
-    position: sticky; top: env(safe-area-inset-top, 0px);
-    background: color-mix(in srgb, var(--paper) 92%, transparent);
-    backdrop-filter: blur(8px); z-index: 10;
-  }
-  .masthead { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; }
-  .logo { font-family: var(--display); font-size: 1.5rem; font-weight: 600; letter-spacing: -.01em; }
-  .logo span { color: var(--blue); }
-  nav { display: flex; gap: 26px; align-items: center; font-size: .92rem; }
-  nav a { color: var(--ink-soft); text-decoration: none; }
-  nav a:hover { color: var(--blue-deep); }
-  @media (max-width: 720px) { nav .hide-sm { display: none; } }
-
-  .btn {
-    display: inline-block; font-family: var(--body); font-size: .95rem; font-weight: 600;
-    padding: 12px 22px; border-radius: 4px; text-decoration: none; border: 1px solid transparent;
-    transition: background .15s, color .15s;
-  }
-  .btn-solid { background: var(--blue-deep); color: #fff; }
-  .btn-solid:hover { background: var(--blue); }
-  .btn-line { border-color: var(--rule); color: var(--ink); background: transparent; }
-  .btn-line:hover { border-color: var(--blue); color: var(--blue-deep); }
-  :where(a, button):focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
-
-  /* ── Hero ─────────────────────────────────────────────────────────── */
-  .hero { padding-block: 72px 64px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: start; }
-  .hero h1 { font-size: clamp(2.3rem, 4.6vw, 3.4rem); letter-spacing: -.015em; margin-block: 14px 20px; }
-  .hero h1 em { font-style: normal; color: var(--blue-deep); }
-  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-  .hero-note { margin-top: 18px; font-size: .88rem; color: var(--slate); }
-  @media (max-width: 880px) { .hero { grid-template-columns: 1fr; gap: 40px; padding-block: 48px 44px; } }
-
-  /* The paycheck. The most characteristic object in this software's world. */
-  .cheque {
-    background: var(--paper-2); border: 1px solid var(--rule); border-radius: 6px;
-    box-shadow: var(--shadow); overflow: hidden;
-  }
-  .cheque-head {
-    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-    padding: 14px 20px; border-bottom: 1px solid var(--rule); background: var(--paper);
-  }
-  .cheque-head div { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); }
-  .cheque-head b { display: block; font-family: var(--body); font-size: .92rem; letter-spacing: 0; text-transform: none; color: var(--ink); font-weight: 600; }
-  .lines { padding: 6px 20px 14px; }
-  .line { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 9px; border-bottom: 1px solid var(--rule); }
-  .line:last-of-type { border-bottom: 0; }
-  .line-label { font-size: .9rem; color: var(--ink-soft); }
-  .line-label small { display: block; font-size: .76rem; color: var(--slate); }
-  .amt { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: .95rem; white-space: nowrap; }
-  .amt.credit { color: var(--credit); }
-  .amt.debit { color: var(--debit); }
-  .cheque-total {
-    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
-    padding: 16px 20px; border-top: 2px solid var(--ink); background: var(--paper);
-  }
-  .cheque-total .amt { font-size: 1.35rem; font-weight: 600; }
-  .cheque-cap { padding: 0 20px 16px; font-size: .76rem; color: var(--slate); background: var(--paper); }
-
-  /* ── Sections ─────────────────────────────────────────────────────── */
-  section { padding-block: 64px; border-top: 1px solid var(--rule); }
-  .sec-head { max-width: 64ch; margin-bottom: 40px; }
-  .sec-head h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin-block: 12px 14px; letter-spacing: -.01em; }
-
-  .pull { font-family: var(--display); font-size: clamp(1.35rem, 2.6vw, 1.9rem); line-height: 1.35; max-width: 26ch; }
-  .pull-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-  @media (max-width: 880px) { .pull-grid { grid-template-columns: 1fr; gap: 28px; } }
-
-  .modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 0 40px; }
-  .module { padding-block: 24px; border-top: 1px solid var(--rule); }
-  .module h3 { font-size: 1.16rem; margin-bottom: 8px; }
-  .module p { font-size: .94rem; color: var(--ink-soft); }
-  .module .eyebrow { display: block; margin-bottom: 10px; }
-
-  /* The edge cases. A numbered list, because these are genuinely enumerable
-     rules — not decoration. */
-  .rules { display: grid; gap: 0; counter-reset: rule; }
-  .rule-row {
-    display: grid; grid-template-columns: 44px 1fr; gap: 18px;
-    padding-block: 22px; border-top: 1px solid var(--rule); align-items: start;
-  }
-  .rule-row::before {
-    counter-increment: rule; content: counter(rule, decimal-leading-zero);
-    font-family: var(--mono); font-size: .8rem; color: var(--blue); padding-top: 3px;
-  }
-  .rule-row h3 { font-family: var(--body); font-size: 1rem; font-weight: 600; margin-bottom: 5px; }
-  .rule-row p { font-size: .93rem; color: var(--ink-soft); max-width: 68ch; }
-
-  /* Screens. Framed like a document rather than floated on a gradient — the
-     point is to read the figures in them. */
-  .shots { display: grid; gap: 44px; }
-  figure { margin: 0; display: grid; gap: 14px; }
-  figure img {
-    width: 100%; max-width: 100%; display: block; height: auto;
-    border: 1px solid var(--rule); border-radius: 6px; box-shadow: var(--shadow);
-    background: var(--paper-2);
-  }
-  figcaption { font-size: .92rem; color: var(--ink-soft); max-width: 68ch; }
-  figcaption b { font-weight: 600; color: var(--ink); }
-  figcaption .demo {
-    display: block; margin-top: 6px; font-family: var(--mono);
-    font-size: .74rem; letter-spacing: .04em; color: var(--slate);
-  }
-
-  .spec { display: grid; gap: 0; }
-  .spec-row {
-    display: grid; grid-template-columns: 250px 1fr; gap: 28px;
-    padding-block: 20px; border-top: 1px solid var(--rule); align-items: baseline;
-  }
-  .spec-row dt { font-weight: 600; font-size: .98rem; }
-  .spec-row dd { margin: 0; font-size: .94rem; color: var(--ink-soft); max-width: 62ch; }
-  @media (max-width: 720px) { .spec-row { grid-template-columns: 1fr; gap: 6px; } }
-
-  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 28px; margin-top: 8px; }
-  .fact { border-left: 2px solid var(--blue); padding-left: 16px; }
-  .fact b { display: block; font-family: var(--mono); font-size: 1.5rem; font-variant-numeric: tabular-nums; }
-  .fact span { font-size: .88rem; color: var(--slate); }
-
-  .cta-band { background: var(--ink); color: var(--paper); border-radius: 6px; padding: 44px; margin-block: 8px; }
-  .cta-band h2 { color: var(--paper); font-size: clamp(1.6rem, 2.8vw, 2.1rem); }
-  .cta-band p { color: color-mix(in srgb, var(--paper) 78%, var(--ink)); margin-block: 12px 26px; max-width: 54ch; }
-  .cta-band .btn-solid { background: var(--paper); color: var(--ink); }
-  .cta-band .btn-solid:hover { background: #fff; }
-  .cta-band .btn-line { border-color: color-mix(in srgb, var(--paper) 40%, transparent); color: var(--paper); }
-  .cta-band .btn-line:hover { border-color: var(--paper); color: var(--paper); }
-  @media (max-width: 620px) { .cta-band { padding: 28px; } }
-
-  footer { border-top: 1px solid var(--rule); padding-block: 32px 48px; font-size: .88rem; color: var(--slate); }
-  .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
-
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header>
   <div class="wrap masthead">
-    <div class="logo">Sky<span>Sale</span></div>
+    <a href="/" class="logo">Sky<span>Sale</span></a>
     <nav>
-      <a class="hide-sm" href="#what">What it does</a>
-      <a class="hide-sm" href="#email">Follow-up</a>
-      <a class="hide-sm" href="#reconcile">Reconciling</a>
-      <a class="hide-sm" href="#screens">See it</a>
-      <a class="hide-sm" href="#rules">The hard parts</a>
-      <a class="hide-sm" href="#who">Who it's for</a>
-      <a class="btn btn-solid" href="https://app.sky-sale.com/">Sign in</a>
+      <a class="opt" href="payroll.html">Payroll</a>
+      <a class="opt" href="follow-up.html">Follow-up</a>
+      <a class="opt" href="reconciliation.html">Reconciling</a>
+      <a class="opt" href="bookings.html">Bookings</a>
+      <a class="btn btn-ghost btn-sm" href="https://app.sky-sale.com/">Sign in</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <div class="wrap">
-    <div class="hero">
-      <div>
-        <p class="eyebrow">Point of sale &amp; commission payroll</p>
-        <h1>Any register can take the money. Ours can tell you <em>who earned it</em>.</h1>
-        <p class="lede">
-          SkySale is a point-of-sale and CRM built for high-ticket specialty retail —
-          where one sale can be five figures, staff work across more than one shop,
-          and a commission mistake is somebody's rent. It rings up the sale, then
-          gets the paycheck behind it right.
-        </p>
-        <div class="hero-cta">
-          <a class="btn btn-solid" href="#what">See what it does</a>
-          <a class="btn btn-line" href="mailto:skylerbaileyconsulting@gmail.com?subject=SkySale">Get in touch</a>
-        </div>
-        <p class="hero-note">
-          Already a customer? <a href="https://app.sky-sale.com/" style="color:var(--blue-deep)">Sign in</a> —
-          every shop gets its own address, like <span class="num">yourshop.sky-sale.com</span>.
-        </p>
-      </div>
 
-      <div class="cheque">
-        <div class="cheque-head">
-          <div>Pay period<b>Sep 1 – Sep 15</b></div>
-          <div>Payday<b>Oct 1</b></div>
-          <div>Employee<b>Both stores</b></div>
-        </div>
-        <div class="lines">
-          <div class="line">
-            <span class="line-label">Net sales</span>
-            <span class="amt credit">$48,210.00</span>
-          </div>
-          <div class="line">
-            <span class="line-label">Return on receipt 1081<small>Sold in August — counted to August</small></span>
-            <span class="amt debit">−$2,000.00</span>
-          </div>
-          <div class="line">
-            <span class="line-label">Commission, 8%</span>
-            <span class="amt">$3,696.80</span>
-          </div>
-          <div class="line">
-            <span class="line-label">Dispute held, receipt 1104<small>Held, not lost — released if it's won</small></span>
-            <span class="amt debit">−$216.38</span>
-          </div>
-          <div class="line">
-            <span class="line-label">Carried from Sep 15<small>That cheque closed below zero</small></span>
-            <span class="amt debit">−$84.12</span>
-          </div>
-        </div>
-        <div class="cheque-total">
-          <span class="line-label" style="font-weight:600;color:var(--ink)">Net pay</span>
-          <span class="amt">$3,396.30</span>
-        </div>
-        <p class="cheque-cap">An example paycheck, not real payroll. Every line is one you can click through to the receipts behind it.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── The argument ──────────────────────────────────────────────── -->
-  <section>
-    <div class="wrap pull-grid">
-      <p class="pull">
-        Most registers stop at the sale. The hard part starts after it.
+  <!-- ── Hero ───────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Point of sale &amp; commission payroll</p>
+      <h1>Any register can take&nbsp;the&nbsp;money.<br>Ours knows <em>who earned&nbsp;it</em>.</h1>
+      <p class="lede">
+        Built for shops where one sale can be five figures, the staff work across
+        more than one location, and a commission mistake is somebody's rent.
       </p>
-      <div style="display:grid;gap:16px">
-        <p class="lede">
-          A device sells for twelve thousand dollars. Two people split the sale. One
-          of them works at more than one location. Six weeks later the customer
-          returns it — and the cheque that paid the commission has already gone out.
-        </p>
-        <p class="lede">
-          That's an afternoon of spreadsheet work in most shops, and it's where the
-          money quietly goes wrong. SkySale treats it as the main event: every figure
-          on a paycheck traces back to the receipts that produced it, and every rule
-          below is one the software already knows.
-        </p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="payroll.html">See how payroll works</a>
+        <a class="btn btn-ghost" href="mailto:skylerbaileyconsulting@gmail.com?subject=SkySale">Get in touch</a>
       </div>
     </div>
   </section>
 
-  <!-- ── What it does ──────────────────────────────────────────────── -->
-  <section id="what">
+  <!-- ── The pinned paycheck ─────────────────────────────────────────── -->
+  <section class="pin rule-top">
+    <div class="wrap pin-inner">
+      <div class="pin-copy">
+        <p class="eyebrow">One paycheck</p>
+        <h2>Watch a fortnight settle.</h2>
+        <p class="lede pin-note">
+          Every line here is one the software worked out on its own — which
+          month a return belongs to, whether a dispute is money lost or money
+          held, what last payday left behind. Most registers hand you the first
+          line and leave the rest to a spreadsheet.
+        </p>
+      </div>
+
+      <div class="cheque hero-art">
+        <div class="cheque-head">
+          <div><span>Pay period</span><b>Sep 1 – Sep 15</b></div>
+          <div><span>Payday</span><b>Oct 1</b></div>
+          <div><span>Covering</span><b>Every location</b></div>
+        </div>
+
+        <dl style="margin:0">
+          <div class="cheque-line pin-line">
+            <dt>Net sales</dt>
+            <dd class="credit">$48,210.00</dd>
+          </div>
+          <div class="cheque-line pin-line">
+            <dt>Return on receipt 1081<small>Sold in August — counted to August</small></dt>
+            <dd class="debit">−$2,000.00</dd>
+          </div>
+          <div class="cheque-line pin-line">
+            <dt>Commission at 8%</dt>
+            <dd>$3,696.80</dd>
+          </div>
+          <div class="cheque-line pin-line">
+            <dt>Dispute held, receipt 1104<small>Held, not lost — released if it's won</small></dt>
+            <dd class="debit">−$216.38</dd>
+          </div>
+          <div class="cheque-line pin-line">
+            <dt>Carried from Sep 15<small>That cheque closed below zero</small></dt>
+            <dd class="debit">−$84.12</dd>
+          </div>
+        </dl>
+
+        <div class="cheque-total pin-total">
+          <span>Net pay</span>
+          <b>$3,396.30</b>
+        </div>
+        <p class="cheque-note">An example, not real payroll. Every line opens onto the receipts behind it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The four ────────────────────────────────────────────────────── -->
+  <section class="rule-top">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head narrow reveal">
         <p class="eyebrow">What it does</p>
-        <h2>One system from the card reader to the cheque.</h2>
-        <p class="lede">Six parts, each of which most shops buy separately and reconcile by hand.</p>
+        <h2>Four jobs most shops buy separately and reconcile by hand.</h2>
       </div>
 
-      <div class="modules">
-        <div class="module">
-          <span class="eyebrow">01 — Register</span>
-          <h3>Sell, return, split the tender</h3>
+      <div class="cards stagger">
+        <a class="card" href="payroll.html">
+          <span class="eyebrow">01 — Payroll</span>
+          <h3>Commission, correct</h3>
           <p>
-            Card, cash, cheque or a split across them. Credit a sale to more than one
-            person with the percentages you choose. Card payments run through your
-            own merchant account, and the receipt emails itself.
+            Per-person plans on your own schedule. Returns, disputes and
+            shortfalls land on the right cheque without anyone chasing them.
           </p>
-        </div>
-        <div class="module">
-          <span class="eyebrow">02 — Customers</span>
-          <h3>Every purchase, one record</h3>
+          <span class="more">How it works</span>
+        </a>
+        <a class="card" href="follow-up.html">
+          <span class="eyebrow">02 — Follow-up</span>
+          <h3>The email writes itself</h3>
           <p>
-            Who bought what, when, from whom, and what they've spent across every
-            visit. Search by anything you half-remember — a name half-recalled, a
-            phone number, the product they came in for.
+            A receipt as the sale closes, and a welcome note built from the
+            products on it. Then write to any group you can describe.
           </p>
-        </div>
-        <div class="module">
-          <span class="eyebrow">03 — Commission &amp; payroll</span>
-          <h3>Semi-monthly, in arrears, correct</h3>
+          <span class="more">What gets sent</span>
+        </a>
+        <a class="card" href="reconciliation.html">
+          <span class="eyebrow">03 — Reconciling</span>
+          <h3>Prove the money arrived</h3>
           <p>
-            Per-person plans, paid on your own schedule. Returns, disputes and
-            shortfalls land on the right cheque without anyone chasing them. Staff see
-            their own numbers; managers see everyone's.
+            Your card sales against the processor's own batch, line by line,
+            with the difference named rather than left as a number.
           </p>
-        </div>
-        <div class="module">
+          <span class="more">See the audit</span>
+        </a>
+        <a class="card" href="bookings.html">
           <span class="eyebrow">04 — Bookings</span>
-          <h3>A calendar customers can use</h3>
+          <h3>A calendar customers use</h3>
           <p>
-            Set your opening hours and treatment menu once. Book a session and the
-            customer gets a confirmation they can reschedule or cancel themselves —
-            from the email, without ringing the shop.
+            Sessions book against your real opening hours, and the customer can
+            move or cancel one from their own email.
           </p>
-        </div>
-        <div class="module">
-          <span class="eyebrow">05 — Reports</span>
-          <h3>Figures you can open</h3>
-          <p>
-            Daily takings, top products, a live leaderboard, per-employee statements.
-            Every total opens onto the transactions inside it, so a number you doubt
-            takes one click to check rather than an afternoon to rebuild.
-          </p>
-        </div>
-        <div class="module">
-          <span class="eyebrow">06 — Reconciliation</span>
-          <h3>Against the merchant's own batch</h3>
-          <p>
-            Match the day's card sales to what the processor actually settled, and
-            see what didn't line up. Import your history from the POS you're
-            leaving, so the reports go back further than today.
-          </p>
-        </div>
+          <span class="more">Open the calendar</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ── Customer email ────────────────────────────────────────────── -->
-  <section id="email">
+  <!-- ── The rules ───────────────────────────────────────────────────── -->
+  <section class="rule-top">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">After the sale</p>
-        <h2>The follow-up writes itself.</h2>
-        <p class="lede">
-          Most shops mean to send something after a big purchase and most shops
-          don't. Every sale here can leave the counter with its email already
-          written — and not a generic thank-you, but one assembled from what the
-          customer actually bought.
-        </p>
-      </div>
-
-      <dl class="spec">
-        <div class="spec-row">
-          <dt>The receipt, as the sale closes</dt>
-          <dd>
-            Emailed the moment you take payment, carrying your shop's name, address
-            and footer — the store that made the sale, not whichever account happens
-            to be signed in.
-          </dd>
-        </div>
-        <div class="spec-row">
-          <dt>A welcome email built from the purchase</dt>
-          <dd>
-            Assembled from the products on that receipt, with how to use each one.
-            Someone who buys a device and two serums gets guidance on those three
-            things, in that combination — which is the email people actually read,
-            and the one that brings them back for the refill.
-          </dd>
-        </div>
-        <div class="spec-row">
-          <dt>Read it before it goes</dt>
-          <dd>
-            Every message opens in a preview with the subject and body editable.
-            Nothing leaves in your name that nobody looked at.
-          </dd>
-        </div>
-        <div class="spec-row">
-          <dt>From your mailbox, not ours</dt>
-          <dd>
-            Mail sends through your own connected account, so it arrives from your
-            address, replies come back to you, and every message is in your Sent
-            folder where you'd expect it.
-          </dd>
-        </div>
-        <div class="spec-row">
-          <dt>Appointment confirmations too</dt>
-          <dd>
-            A booking sends its own confirmation with Reschedule and Cancel buttons
-            the customer can use themselves, without ringing the shop — and the
-            calendar updates while the front desk is looking at it.
-          </dd>
-        </div>
-        <div class="spec-row">
-          <dt>Or the whole group at once</dt>
-          <dd>
-            Filter the customer list by what they bought, who served them or when
-            they last came in, and write to everyone in it — each one a separate
-            email addressed to that person, not a visible group.
-          </dd>
-        </div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- ── Reconciliation ────────────────────────────────────────────── -->
-  <section id="reconcile">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Merchant reconciliation</p>
-        <h2>Prove the money actually arrived.</h2>
-        <p class="lede">
-          The register says you took a certain amount in card payments today. Your
-          processor settles something else. The gap is usually a decline that looked
-          like a sale, a refund with nothing behind it, or a batch that didn't close
-          — and in most shops nobody finds out for a month.
-        </p>
-      </div>
-
-      <dl class="spec">
-        <div class="spec-row">
-          <dt>Your sales against their batch</dt>
-          <dd>
-            Line up the day's card transactions in the register with what the
-            processor actually settled, one against one — not two totals that differ
-            by an amount you can't explain.
-          </dd>
-        </div>
-        <div class="spec-row">
-          <dt>What didn't match, and on which side</dt>
-          <dd>
-            A sale the register has and the processor doesn't. A credit on their side
-            with no refund on yours. Each one named, with its amount and its receipt,
-            so it's a thing you can go and look at.
-          </dd>
-        </div>
-        <div class="spec-row">
-          <dt>Declines and offsets kept separate</dt>
-          <dd>
-            Failed attempts, offsetting entries and over-limit transactions are pulled
-            out on their own rather than buried in a single difference. Most of a
-            day's discrepancy is usually one of these, and it isn't money missing.
-          </dd>
-        </div>
-        <div class="spec-row">
-          <dt>Save an audit, re-run it later</dt>
-          <dd>
-            A period you've checked can be reopened and recalculated against the
-            current records, so a correction made since shows up rather than being
-            frozen into a report from the day you ran it.
-          </dd>
-        </div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- ── Screens ───────────────────────────────────────────────────── -->
-  <section id="screens">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">A look at it</p>
-        <h2>No dashboard theatre. Screens you'd actually work in.</h2>
-      </div>
-
-      <div class="shots">
-        <figure>
-          <img src="assets/calendar.png" loading="lazy" alt="The Calendar tab showing a week of booked treatment sessions, each with a customer, treatment and specialist, and one session marked cancelled." width="1000" height="785">
-          <figcaption>
-            <b>The week's book.</b> Sessions sit under the day they fall on, with the
-            treatment and the specialist on each. Cancellations stay on the page
-            struck through rather than vanishing, so the front desk can see what
-            changed. A customer who reschedules from their email changes this page
-            without anyone having to refresh it.
-            <span class="demo">A demonstration store. The staff, customers and bookings are invented.</span>
-          </figcaption>
-        </figure>
-
-        <figure>
-          <img src="assets/commissions.png" loading="lazy" alt="The commissions report: each employee's sales, net sales, chargebacks and commission for a pay period, with a dispute held back from the upcoming paycheck." width="1010" height="682">
-          <figcaption>
-            <b>What everyone is owed, and why.</b> Sales and commission per person
-            for the period, then the two lines that make it a paycheck rather than a
-            total: what was earned, and what is being held while a dispute is open.
-            Staff enter their own name and PIN to see their own figures; an admin sees
-            the whole roster.
-            <span class="demo">A demonstration store. The staff, customers and figures are invented.</span>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── The rules ─────────────────────────────────────────────────── -->
-  <section id="rules">
-    <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head narrow reveal">
         <p class="eyebrow">The hard parts</p>
         <h2>The rules that cost you money when software ignores them.</h2>
         <p class="lede">
-          These aren't settings to configure. They're how SkySale already behaves,
-          because each one was a real mistake somebody paid for first.
+          Not settings to configure. This is how it already behaves, because
+          each one was a real mistake somebody paid for first.
         </p>
       </div>
 
-      <div class="rules">
-        <div class="rule-row">
-          <div>
-            <h3>A return counts against the day the item sold</h3>
-            <p>
-              Not the day the money went back. An August sale refunded in September
-              belongs to August — so it comes off the commission it actually paid.
-            </p>
-          </div>
+      <dl class="spec stagger">
+        <div class="spec-row">
+          <dt>A return counts against the day the item sold</dt>
+          <dd>Not the day the money went back. An August sale refunded in September belongs to August, so it comes off the commission it actually paid.</dd>
         </div>
-        <div class="rule-row">
-          <div>
-            <h3>A return comes off the cheque that paid its sale</h3>
-            <p>
-              If that cheque is still open it simply reduces net sales. If it has
-              already gone out, it becomes a deduction on the next one — once, and
-              visibly.
-            </p>
-          </div>
+        <div class="spec-row">
+          <dt>A chargeback is held, not lost</dt>
+          <dd>Money in dispute is withheld from the open cheque and remembered, so it can't be taken twice. Win it and it's released; lose it and it stays gone.</dd>
         </div>
-        <div class="rule-row">
-          <div>
-            <h3>A chargeback is held, not lost</h3>
-            <p>
-              Money in dispute is withheld from the open cheque and remembered, so it
-              can't be taken twice. Win it and it's released; lose it and it stays
-              gone. A human can mark one as already settled elsewhere.
-            </p>
-          </div>
+        <div class="spec-row">
+          <dt>A negative cheque carries forward</dt>
+          <dd>A cheque below zero pays nothing, and the shortfall moves to the very next payday as one carried line — not by repeating every deduction behind it.</dd>
         </div>
-        <div class="rule-row">
-          <div>
-            <h3>A negative cheque carries forward</h3>
-            <p>
-              A cheque that lands below zero pays nothing, and the shortfall moves to
-              the very next payday as a single carried line — not by repeating every
-              deduction behind it and double-counting.
-            </p>
-          </div>
+        <div class="spec-row">
+          <dt>One person, one paycheck, across every location</dt>
+          <dd>Staff who work at more than one shop have a record at each and a single cheque, judged on the combined total.</dd>
         </div>
-        <div class="rule-row">
-          <div>
-            <h3>One person, one paycheck, across every location</h3>
-            <p>
-              Staff who work at more than one location have a record at each and a
-              single cheque. The shortfall is judged on the combined total, and
-              marking them paid closes every one of them.
-            </p>
-          </div>
+        <div class="spec-row">
+          <dt>The day ends when your shop closes</dt>
+          <dd>Not at midnight on a server in another timezone. Every report and pay period is read on your own clock, so the evening's sales land in the day you rang them up.</dd>
         </div>
-        <div class="rule-row">
-          <div>
-            <h3>The day ends when your shop closes</h3>
-            <p>
-              Not at midnight on a server in another timezone. Every report, pay
-              period and leaderboard is read on your own clock — so the evening's
-              sales are in the day you rang them up.
-            </p>
-          </div>
-        </div>
-      </div>
+      </dl>
     </div>
   </section>
 
-  <!-- ── Who ───────────────────────────────────────────────────────── -->
-  <section id="who">
+  <!-- ── Who ─────────────────────────────────────────────────────────── -->
+  <section class="rule-top">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head narrow reveal">
         <p class="eyebrow">Who it's for</p>
-        <h2>Shops where the average sale is large and the staff are shared.</h2>
+        <h2>Where the average sale is large and the staff are shared.</h2>
         <p class="lede">
-          Medical spas, skincare and wellness studios, device and equipment retailers —
-          anywhere a commissioned team sells considered, high-value products, and
-          getting their pay right matters more than shaving a second off checkout.
+          Medical spas, skincare and wellness studios, device and equipment
+          retailers — anywhere a commissioned team sells considered, high-value
+          products, and getting their pay right matters more than shaving a
+          second off checkout.
         </p>
       </div>
-      <div class="facts">
-        <div class="fact"><b>Any number</b><span>of locations, with one roster and one paycheck per person</span></div>
-        <div class="fact"><b>3 roles</b><span>staff see their own figures, managers see everyone's</span></div>
-        <div class="fact"><b>Your schedule</b><span>semi-monthly, fortnightly or whatever your paydays are</span></div>
-        <div class="fact"><b>Bring your history</b><span>import the records from the POS you're leaving</span></div>
+      <div class="stats reveal">
+        <div class="stat"><b>Any number</b><span>of locations, one roster, one paycheck per person</span></div>
+        <div class="stat"><b>3 roles</b><span>staff see their own figures, managers see everyone's</span></div>
+        <div class="stat"><b>Your schedule</b><span>semi-monthly, fortnightly, or whatever your paydays are</span></div>
+        <div class="stat"><b>Your history</b><span>imported from the system you're leaving, whatever shape it's in</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ── CTA ───────────────────────────────────────────────────────── -->
-  <section id="talk" style="border-top:0">
+  <!-- ── Closer ──────────────────────────────────────────────────────── -->
+  <section class="rule-top">
     <div class="wrap">
-      <div class="cta-band">
-        <p class="eyebrow" style="color:color-mix(in srgb, var(--paper) 62%, var(--ink))">Get in touch</p>
-        <h2>Bring us your messiest pay period.</h2>
-        <p>
-          The fastest way to see whether SkySale fits is to walk through a fortnight
-          you've already run — returns, disputes, split sales and all — and see
-          whether the numbers come out where you put them.
+      <div class="closer reveal">
+        <p class="eyebrow">Get in touch</p>
+        <h2 style="margin-block:16px 18px">Bring us your messiest pay period.</h2>
+        <p class="lede">
+          The fastest way to know whether this fits is to walk through a
+          fortnight you've already run — returns, disputes, split sales and all
+          — and see whether the numbers come out where you put them.
         </p>
-        <div class="hero-cta" style="margin-top:0">
+        <div class="cta-row">
           <a class="btn btn-solid" href="mailto:skylerbaileyconsulting@gmail.com?subject=SkySale">Email us</a>
-          <a class="btn btn-line" href="mailto:skylerbaileyconsulting@gmail.com?subject=SkySale">skylerbaileyconsulting@gmail.com</a>
+          <a class="btn btn-ghost" href="https://app.sky-sale.com/">Sign in</a>
         </div>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="wrap foot">
-    <div><span class="logo" style="font-size:1.1rem">Sky<span>Sale</span></span> &nbsp;·&nbsp; Point of sale &amp; commission payroll</div>
-    <div>
-      <a href="https://app.sky-sale.com/" style="color:var(--blue-deep)">Sign in</a>
-      &nbsp;·&nbsp; <a href="mailto:skylerbaileyconsulting@gmail.com" style="color:var(--blue-deep)">skylerbaileyconsulting@gmail.com</a>
-    </div>
+    <div><span class="logo">Sky<span>Sale</span></span> &nbsp;·&nbsp; Point of sale &amp; commission payroll</div>
+    <nav>
+      <a href="payroll.html">Payroll</a>
+      <a href="follow-up.html">Follow-up</a>
+      <a href="reconciliation.html">Reconciling</a>
+      <a href="bookings.html">Bookings</a>
+      <a href="mailto:skylerbaileyconsulting@gmail.com">Contact</a>
+    </nav>
   </div>
 </footer>
+
 </body>
 </html>
