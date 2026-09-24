@@ -209,6 +209,15 @@
     font-size: .74rem; letter-spacing: .04em; color: var(--slate);
   }
 
+  .spec { display: grid; gap: 0; }
+  .spec-row {
+    display: grid; grid-template-columns: 250px 1fr; gap: 28px;
+    padding-block: 20px; border-top: 1px solid var(--rule); align-items: baseline;
+  }
+  .spec-row dt { font-weight: 600; font-size: .98rem; }
+  .spec-row dd { margin: 0; font-size: .94rem; color: var(--ink-soft); max-width: 62ch; }
+  @media (max-width: 720px) { .spec-row { grid-template-columns: 1fr; gap: 6px; } }
+
   .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 28px; margin-top: 8px; }
   .fact { border-left: 2px solid var(--blue); padding-left: 16px; }
   .fact b { display: block; font-family: var(--mono); font-size: 1.5rem; font-variant-numeric: tabular-nums; }
@@ -236,11 +245,12 @@
     <div class="logo">Sky<span>Sale</span></div>
     <nav>
       <a class="hide-sm" href="#what">What it does</a>
+      <a class="hide-sm" href="#email">Follow-up</a>
+      <a class="hide-sm" href="#reconcile">Reconciling</a>
       <a class="hide-sm" href="#screens">See it</a>
       <a class="hide-sm" href="#rules">The hard parts</a>
       <a class="hide-sm" href="#who">Who it's for</a>
-      <a class="hide-sm" href="https://app.sky-sale.com/">Sign in</a>
-      <a class="btn btn-solid" href="#talk">Book a walkthrough</a>
+      <a class="btn btn-solid" href="https://app.sky-sale.com/">Sign in</a>
     </nav>
   </div>
 </header>
@@ -258,13 +268,12 @@
           gets the paycheck behind it right.
         </p>
         <div class="hero-cta">
-          <a class="btn btn-solid" href="#talk">Book a walkthrough</a>
-          <a class="btn btn-line" href="#what">See what it does</a>
+          <a class="btn btn-solid" href="#what">See what it does</a>
+          <a class="btn btn-line" href="mailto:skylerbaileyconsulting@gmail.com?subject=SkySale">Get in touch</a>
         </div>
         <p class="hero-note">
-          Running two stores and a shared staff roster in Santa Fe, New Mexico, today.
           Already a customer? <a href="https://app.sky-sale.com/" style="color:var(--blue-deep)">Sign in</a> —
-          every shop gets its own address, like <span class="num">glowsf.sky-sale.com</span>.
+          every shop gets its own address, like <span class="num">yourshop.sky-sale.com</span>.
         </p>
       </div>
 
@@ -313,9 +322,9 @@
       </p>
       <div style="display:grid;gap:16px">
         <p class="lede">
-          A device sells for $18,750. Two people split the sale. One of them works at
-          both shops. Six weeks later the customer returns it — and the cheque that
-          paid the commission has already gone out.
+          A device sells for twelve thousand dollars. Two people split the sale. One
+          of them works at more than one location. Six weeks later the customer
+          returns it — and the cheque that paid the commission has already gone out.
         </p>
         <p class="lede">
           That's an afternoon of spreadsheet work in most shops, and it's where the
@@ -351,8 +360,8 @@
           <h3>Every purchase, one record</h3>
           <p>
             Who bought what, when, from whom, and what they've spent across every
-            visit. Search by anything you half-remember. Send one customer a welcome
-            email built from what they actually bought, or write to a filtered group.
+            visit. Search by anything you half-remember — a name half-recalled, a
+            phone number, the product they came in for.
           </p>
         </div>
         <div class="module">
@@ -386,12 +395,130 @@
           <span class="eyebrow">06 — Reconciliation</span>
           <h3>Against the merchant's own batch</h3>
           <p>
-            Match the day's card sales to what the processor actually settled, and see
-            what didn't line up — declines, offsets, a refund with no sale behind it.
-            Import your history from the POS you're leaving.
+            Match the day's card sales to what the processor actually settled, and
+            see what didn't line up. Import your history from the POS you're
+            leaving, so the reports go back further than today.
           </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── Customer email ────────────────────────────────────────────── -->
+  <section id="email">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">After the sale</p>
+        <h2>The follow-up writes itself.</h2>
+        <p class="lede">
+          Most shops mean to send something after a big purchase and most shops
+          don't. Every sale here can leave the counter with its email already
+          written — and not a generic thank-you, but one assembled from what the
+          customer actually bought.
+        </p>
+      </div>
+
+      <dl class="spec">
+        <div class="spec-row">
+          <dt>The receipt, as the sale closes</dt>
+          <dd>
+            Emailed the moment you take payment, carrying your shop's name, address
+            and footer — the store that made the sale, not whichever account happens
+            to be signed in.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>A welcome email built from the purchase</dt>
+          <dd>
+            Assembled from the products on that receipt, with how to use each one.
+            Someone who buys a device and two serums gets guidance on those three
+            things, in that combination — which is the email people actually read,
+            and the one that brings them back for the refill.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>Read it before it goes</dt>
+          <dd>
+            Every message opens in a preview with the subject and body editable.
+            Nothing leaves in your name that nobody looked at.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>From your mailbox, not ours</dt>
+          <dd>
+            Mail sends through your own connected account, so it arrives from your
+            address, replies come back to you, and every message is in your Sent
+            folder where you'd expect it.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>Appointment confirmations too</dt>
+          <dd>
+            A booking sends its own confirmation with Reschedule and Cancel buttons
+            the customer can use themselves, without ringing the shop — and the
+            calendar updates while the front desk is looking at it.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>Or the whole group at once</dt>
+          <dd>
+            Filter the customer list by what they bought, who served them or when
+            they last came in, and write to everyone in it — each one a separate
+            email addressed to that person, not a visible group.
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── Reconciliation ────────────────────────────────────────────── -->
+  <section id="reconcile">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Merchant reconciliation</p>
+        <h2>Prove the money actually arrived.</h2>
+        <p class="lede">
+          The register says you took a certain amount in card payments today. Your
+          processor settles something else. The gap is usually a decline that looked
+          like a sale, a refund with nothing behind it, or a batch that didn't close
+          — and in most shops nobody finds out for a month.
+        </p>
+      </div>
+
+      <dl class="spec">
+        <div class="spec-row">
+          <dt>Your sales against their batch</dt>
+          <dd>
+            Line up the day's card transactions in the register with what the
+            processor actually settled, one against one — not two totals that differ
+            by an amount you can't explain.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>What didn't match, and on which side</dt>
+          <dd>
+            A sale the register has and the processor doesn't. A credit on their side
+            with no refund on yours. Each one named, with its amount and its receipt,
+            so it's a thing you can go and look at.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>Declines and offsets kept separate</dt>
+          <dd>
+            Failed attempts, offsetting entries and over-limit transactions are pulled
+            out on their own rather than buried in a single difference. Most of a
+            day's discrepancy is usually one of these, and it isn't money missing.
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>Save an audit, re-run it later</dt>
+          <dd>
+            A period you've checked can be reopened and recalculated against the
+            current records, so a correction made since shows up rather than being
+            frozen into a report from the day you ran it.
+          </dd>
+        </div>
+      </dl>
     </div>
   </section>
 
@@ -485,11 +612,11 @@
         </div>
         <div class="rule-row">
           <div>
-            <h3>One person, one paycheck, across both shops</h3>
+            <h3>One person, one paycheck, across every location</h3>
             <p>
-              Staff who work at more than one location have one record per shop and
-              one cheque. The shortfall is judged on the combined total, and marking
-              them paid closes both.
+              Staff who work at more than one location have a record at each and a
+              single cheque. The shortfall is judged on the combined total, and
+              marking them paid closes every one of them.
             </p>
           </div>
         </div>
@@ -520,10 +647,10 @@
         </p>
       </div>
       <div class="facts">
-        <div class="fact"><b>2</b><span>stores running on it today, with one shared roster</span></div>
-        <div class="fact"><b>$18,750</b><span>largest single sale it handles, commissioned and tracked</span></div>
-        <div class="fact"><b>3</b><span>roles — staff see their own figures, managers see everyone's</span></div>
-        <div class="fact"><b>1st &amp; 15th</b><span>paydays, each covering the half-month that closed before it</span></div>
+        <div class="fact"><b>Any number</b><span>of locations, with one roster and one paycheck per person</span></div>
+        <div class="fact"><b>3 roles</b><span>staff see their own figures, managers see everyone's</span></div>
+        <div class="fact"><b>Your schedule</b><span>semi-monthly, fortnightly or whatever your paydays are</span></div>
+        <div class="fact"><b>Bring your history</b><span>import the records from the POS you're leaving</span></div>
       </div>
     </div>
   </section>
@@ -540,8 +667,8 @@
           whether the numbers come out where you put them.
         </p>
         <div class="hero-cta" style="margin-top:0">
-          <a class="btn btn-solid" href="mailto:skylerbaileyconsulting@gmail.com?subject=SkySale%20walkthrough">Email us</a>
-          <a class="btn btn-line" href="mailto:skylerbaileyconsulting@gmail.com?subject=SkySale%20walkthrough">skylerbaileyconsulting@gmail.com</a>
+          <a class="btn btn-solid" href="mailto:skylerbaileyconsulting@gmail.com?subject=SkySale">Email us</a>
+          <a class="btn btn-line" href="mailto:skylerbaileyconsulting@gmail.com?subject=SkySale">skylerbaileyconsulting@gmail.com</a>
         </div>
       </div>
     </div>
@@ -553,7 +680,6 @@
     <div><span class="logo" style="font-size:1.1rem">Sky<span>Sale</span></span> &nbsp;·&nbsp; Point of sale &amp; commission payroll</div>
     <div>
       <a href="https://app.sky-sale.com/" style="color:var(--blue-deep)">Sign in</a>
-      &nbsp;·&nbsp; Santa Fe, New Mexico
       &nbsp;·&nbsp; <a href="mailto:skylerbaileyconsulting@gmail.com" style="color:var(--blue-deep)">skylerbaileyconsulting@gmail.com</a>
     </div>
   </div>
