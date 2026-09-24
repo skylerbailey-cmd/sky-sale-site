@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sky-sale.com/sitemap.xml
