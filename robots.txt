@@ -1,3 +1,5 @@
+# SkySale — a point-of-sale and CRM for retail shops.
 User-agent: *
 Allow: /
+
 Sitemap: https://sky-sale.com/sitemap.xml

@@ -1,0 +1,5 @@
+# How to tell us about a security problem with SkySale.
+Contact: mailto:security@sky-sale.com
+Preferred-Languages: en
+Canonical: https://sky-sale.com/.well-known/security.txt
+Expires: 2027-09-25T00:00:00.000Z
