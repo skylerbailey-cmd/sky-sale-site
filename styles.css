@@ -81,7 +81,9 @@ header {
 }
 .logo { font-size: 1.22rem; font-weight: 700; letter-spacing: -.035em; }
 .logo span { color: var(--blue); }
-nav { display: flex; gap: clamp(14px, 2.4vw, 30px); align-items: center; font-size: .92rem; }
+/* Wraps, because a row of links that can't wrap is a row that runs off the
+   side of a phone and takes the whole page's horizontal scroll with it. */
+nav { display: flex; flex-wrap: wrap; gap: clamp(14px, 2.4vw, 30px); align-items: center; font-size: .92rem; }
 nav a { color: var(--ink-dim); transition: color .2s; white-space: nowrap; }
 nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
 @media (max-width: 860px) { nav .opt { display: none; } }
@@ -97,6 +99,16 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
 .btn-ghost { border-color: var(--line); color: var(--ink); }
 .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
 .btn-sm { padding: 9px 18px; font-size: .88rem; }
+/* The one action the site exists to produce. Bigger than the rest, and it
+   keeps a ring of the accent around it so it still reads as the loud one
+   against the dark ground, where a flat fill can recede. */
+.btn-lg { padding: 15px 30px; font-size: 1rem; }
+.btn-solid { box-shadow: 0 0 0 0 var(--blue-glow); transition: background .2s, box-shadow .25s, transform .15s; }
+.btn-solid:hover { box-shadow: 0 0 0 6px var(--blue-glow); transform: translateY(-1px); }
+
+/* The masthead's button stays put at phone width, unlike the section links —
+   a nav that collapses to nothing is a page with no way forward on a phone. */
+@media (max-width: 860px) { .masthead .btn { display: inline-block; } }
 
 /* ── Hero ──────────────────────────────────────────────────────────────── */
 .hero { padding-block: clamp(70px, 13vh, 130px) clamp(50px, 9vh, 100px); position: relative; }
@@ -137,6 +149,12 @@ section { padding-block: clamp(64px, 11vh, 132px); }
 .cheque-line dt { font-size: .93rem; color: var(--ink-dim); }
 .cheque-line dt small { display: block; font-size: .76rem; color: var(--ink-faint); margin-top: 2px; }
 .cheque-line dd { margin: 0; font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: .95rem; white-space: nowrap; }
+/* On a narrow screen a long label and its amount stop fitting on one line;
+   let the amount drop underneath rather than push the card wider. */
+@media (max-width: 560px) {
+  .cheque-line { flex-wrap: wrap; gap: 4px 20px; }
+  .cheque-line dd { margin-left: auto; }
+}
 .cheque-line dd.credit { color: var(--credit); }
 .cheque-line dd.debit { color: var(--debit); }
 .cheque-total {
@@ -209,7 +227,7 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
 .foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: baseline; }
 .foot a { color: var(--ink-dim); }
 .foot a:hover { color: var(--blue); }
-.foot nav { gap: 20px; }
+.foot nav { gap: 14px 20px; }
 
 /* ── Motion ────────────────────────────────────────────────────────────── *
  * Everything above is the resting state and is fully visible. The rules
