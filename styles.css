@@ -86,7 +86,19 @@ header {
 nav { display: flex; flex-wrap: wrap; gap: clamp(14px, 2.4vw, 30px); align-items: center; font-size: .92rem; }
 nav a { color: var(--ink-dim); transition: color .2s; white-space: nowrap; }
 nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
-@media (max-width: 860px) { nav .opt { display: none; } }
+/* The section links go on a phone; signing in does not. Someone on a phone
+   is far more likely to be an existing shop opening their register than a
+   stranger reading about reconciliation — and with every .opt hidden there
+   was no way in from a phone at all. */
+@media (max-width: 860px) {
+  nav .opt:not(.signin) { display: none; }
+  nav .signin {
+    display: inline-flex; align-items: center; min-height: 44px;
+    padding: 0 18px; border: 1.5px solid var(--line);
+    border-radius: 999px; color: var(--ink);
+  }
+  nav .signin:hover { border-color: var(--blue); color: var(--blue); }
+}
 
 .btn {
   display: inline-block; font-family: var(--display); font-weight: 600;
@@ -114,8 +126,13 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
 .hero { padding-block: clamp(70px, 13vh, 130px) clamp(50px, 9vh, 100px); position: relative; }
 /* One soft light source, behind the headline. The only gradient on the site. */
 .hero::before {
-  content: ''; position: absolute; inset: -20% -30% auto; height: 640px;
-  background: radial-gradient(60% 60% at 50% 0%, var(--blue-glow), transparent 70%);
+  /* Kept inside the viewport. It used to hang 30% past each edge, which no
+     one could see — overflow-x on the body clipped it — but it made the page
+     measure a third wider than the screen, which reads as broken layout every
+     time anyone checks. The gradient is widened instead, so it looks the same
+     and the page is the width it says it is. */
+  content: ''; position: absolute; inset: -20% 0 auto; height: 640px;
+  background: radial-gradient(120% 60% at 50% 0%, var(--blue-glow), transparent 70%);
   pointer-events: none; z-index: -1;
 }
 .hero h1 { margin-block: 20px 26px; }
@@ -217,8 +234,8 @@ figcaption .demo {
   position: relative; overflow: hidden;
 }
 .closer::before {
-  content: ''; position: absolute; inset: auto -10% -60% ; height: 340px;
-  background: radial-gradient(50% 60% at 50% 100%, var(--blue-glow), transparent 70%);
+  content: ''; position: absolute; inset: auto 0 -60%; height: 340px;
+  background: radial-gradient(70% 60% at 50% 100%, var(--blue-glow), transparent 70%);
   pointer-events: none;
 }
 .closer > * { position: relative; }
