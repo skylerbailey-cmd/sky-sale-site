@@ -57,7 +57,7 @@
       </p>
       <div class="cta-row">
         <a class="btn btn-solid btn-lg" href="https://app.sky-sale.com/signup.html">Create an account</a>
-        <a class="btn btn-ghost" href="#saves">See what it saves</a>
+        <a class="btn btn-ghost" href="#saves">See a customer’s numbers</a>
       </div>
     </div>
   </section>
@@ -81,7 +81,7 @@
           <h3>Know the money actually arrived</h3>
           <p class="vs"><b>Any POS:</b> tells you what you rang up.</p>
           <p class="vs ours"><b>SkySale:</b> checks it against what your processor actually paid you, every morning, texts you the day it doesn’t match, and shows you exactly which transactions don’t.</p>
-          <div class="saves"><b>7.7 h</b><span>a month saved<br>in the example below</span></div>
+          <div class="saves"><b>12.6 h</b><span>a month back at a<br>three-location studio</span></div>
           <span class="more">How the audit works</span>
         </a>
         <a class="mile card" href="payroll.html">
@@ -89,7 +89,7 @@
           <h3>Stop explaining the paycheck</h3>
           <p class="vs"><b>Any POS:</b> exports sales for someone to turn into commission.</p>
           <p class="vs ours"><b>SkySale:</b> works out every commission check — returns, disputes, splits and all — and lets each person see their own, receipt by receipt.</p>
-          <div class="saves"><b>7 h</b><span>a month saved<br>in the example below</span></div>
+          <div class="saves"><b>13 h</b><span>a month back at a<br>three-location studio</span></div>
           <span class="more">How payroll works</span>
         </a>
         <a class="mile card" href="follow-up.html">
@@ -97,247 +97,117 @@
           <h3>Start the relationship on the first sale</h3>
           <p class="vs"><b>Any POS:</b> emails a receipt.</p>
           <p class="vs ours"><b>SkySale:</b> writes every new customer a welcome email about what they bought and how to use it — then keeps them, and their purchases, ready for the next one.</p>
-          <div class="saves"><b>9 h</b><span>a month saved<br>in the example below</span></div>
+          <div class="saves"><b>27 h</b><span>a month back at a<br>three-location studio</span></div>
           <span class="more">What gets sent</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ── What it saves ────────────────────────────────────────────────── -->
-  <section class="rule-top" id="saves">
+
+  <!-- ── A customer, worked through ─────────────────────────────────────
+       Pins while you scroll: each job arrives as a bar the length of the
+       hours it took, shrinks to the hours it takes now, and says what that
+       gave back. Without scroll-driven animation, or with reduced motion,
+       it is simply the finished picture. -->
+  <section class="story" id="saves">
+    <div class="wrap story-inner">
+      <div class="story-head">
+        <p class="eyebrow">A SkySale customer</p>
+        <h2>A three-location cosmetic studio got <em>52.6 hours a month</em> back.</h2>
+        <p class="lede">
+          Three studios in the same city, one team of commissioned staff working across all of them.
+          Here is where the hours went before SkySale, and where they go now.
+        </p>
+      </div>
+
+      <div class="story-rows">
+        <a class="srow" href="reconciliation.html" style="--before:50.0%;--after:8.0%">
+          <div class="srow-label">
+            <b>Automatic audit</b>
+            <span>Logging in to three merchant websites every day to check each batch report against the POS</span>
+          </div>
+          <div class="srow-bar" aria-hidden="true"><i class="ghost"></i><i class="fill"></i></div>
+          <div class="srow-nums">
+            <span class="was">15 h</span><span class="arrow">→</span><span class="now">2.4 h</span>
+            <b class="saved">12.6 h back</b>
+          </div>
+        </a>
+        <a class="srow" href="payroll.html" style="--before:46.7%;--after:3.3%">
+          <div class="srow-label">
+            <b>Commission payroll</b>
+            <span>Exporting every studio’s sales and tracking each employee’s transactions across all three</span>
+          </div>
+          <div class="srow-bar" aria-hidden="true"><i class="ghost"></i><i class="fill"></i></div>
+          <div class="srow-nums">
+            <span class="was">14 h</span><span class="arrow">→</span><span class="now">1 h</span>
+            <b class="saved">13 h back</b>
+          </div>
+        </a>
+        <a class="srow" href="follow-up.html" style="--before:100.0%;--after:10.0%">
+          <div class="srow-label">
+            <b>Welcome emails</b>
+            <span>Writing a personal follow-up for every new customer at three studios</span>
+          </div>
+          <div class="srow-bar" aria-hidden="true"><i class="ghost"></i><i class="fill"></i></div>
+          <div class="srow-nums">
+            <span class="was">30 h</span><span class="arrow">→</span><span class="now">3 h</span>
+            <b class="saved">27 h back</b>
+          </div>
+        </a>
+      </div>
+
+      <div class="story-total">
+        <div><span>Every month, before</span><b class="was">59 h</b></div>
+        <div><span>Every month, with SkySale</span><b>6.4 h</b></div>
+        <div><span>Back, every month</span><b class="credit">52.6 h</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The calculation ─────────────────────────────────────────────── -->
+  <section class="rule-top">
     <div class="wrap narrow">
       <div class="sec-head reveal">
-        <p class="eyebrow">What it saves</p>
-        <h2>Three shops, worked through.</h2>
-        <p class="lede">
-          Where the hours go without it, and where they go with it — every figure is the arithmetic
-          on the line beside it.
-        </p>
+        <p class="eyebrow">The calculation</p>
+        <h2>Where every hour comes from.</h2>
       </div>
-      <div class="examples">
-        <div class="example reveal">
-          <p class="who">Example · automatic audit</p>
-          <h3>A skincare studio, one location</h3>
-          <p class="setup">Open 26 days a month, about 25 card sales a day, one owner who closes out the books.</p>
-          <table>
-            <thead><tr><th>Where the time goes</th><th class="h">Hours / month</th></tr></thead>
-            <tbody>
-            <tr><td><b>Before</b> · Pull the processor’s batch report and the till’s end-of-day, and match them — 15 min × 26 days</td><td class="h">6.5 h</td></tr>
-            <tr><td><b>Before</b> · Track down the two days a month that don’t match — about an hour each</td><td class="h">2 h</td></tr>
-            <tr><td><b style="color:var(--blue)">With SkySale</b> · Read the morning result — about a minute a day</td><td class="h">0.5 h</td></tr>
-            <tr><td><b style="color:var(--blue)">With SkySale</b> · Open a flagged day and see exactly which transactions differ — 10 min × 2</td><td class="h">0.3 h</td></tr>
-            <tr class="sum"><td>Time back</td><td class="h">7.7 h <span style="font-size:.78rem;color:var(--ink-faint);font-weight:400">a month — about 90 hours a year</span></td></tr>
-            </tbody>
-          </table>
-          <p class="also"><b>And the money.</b> A sale the processor never settled, or a refund nobody rang up, is found the next morning — while someone still remembers the day — not at month end, if at all.</p>
-        </div>
-        <div class="example reveal">
-          <p class="who">Example · pay transparency</p>
-          <h3>A medical spa with six commissioned staff</h3>
-          <p class="setup">Paid twice a month. Commission depends on who made each sale, what came back, and which cards were disputed.</p>
-          <table>
-            <thead><tr><th>Where the time goes</th><th class="h">Hours / month</th></tr></thead>
-            <tbody>
-            <tr><td><b>Before</b> · Build the commission spreadsheet from the POS export, fixing returns and disputes by hand — 3 h × 2 paydays</td><td class="h">6 h</td></tr>
-            <tr><td><b>Before</b> · “Why is my check this amount?” — 6 people × 15 min × 2 paydays</td><td class="h">3 h</td></tr>
-            <tr><td><b style="color:var(--blue)">With SkySale</b> · Review the payroll SkySale has already worked out and mark it paid — 30 min × 2</td><td class="h">1 h</td></tr>
-            <tr><td><b style="color:var(--blue)">With SkySale</b> · The occasional question, answered by pointing at the receipts staff can already see</td><td class="h">1 h</td></tr>
-            <tr class="sum"><td>Time back</td><td class="h">7 h <span style="font-size:.78rem;color:var(--ink-faint);font-weight:400">a month — about 84 hours a year</span></td></tr>
-            </tbody>
-          </table>
-          <p class="also"><b>And the trust.</b> Every number on a paycheck opens onto the receipts behind it, and each person can check their own with their PIN. A commission team that can see its working stops wondering whether it was paid right.</p>
-        </div>
-        <div class="example reveal">
-          <p class="who">Example · welcome emails</p>
-          <h3>A beauty boutique with 60 new customers a month</h3>
-          <p class="setup">Each new customer buys something different — a device, a serum, a routine — and deserves to be told how to use it.</p>
-          <table>
-            <thead><tr><th>Where the time goes</th><th class="h">Hours / month</th></tr></thead>
-            <tbody>
-            <tr><td><b>Before</b> · Write a personal follow-up for each new customer — 10 min × 60 (or, more often, not at all)</td><td class="h">10 h</td></tr>
-            <tr><td><b style="color:var(--blue)">With SkySale</b> · Each email is already written from what they bought; read it and send — 1 min × 60</td><td class="h">1 h</td></tr>
-            <tr class="sum"><td>Time back</td><td class="h">9 h <span style="font-size:.78rem;color:var(--ink-faint);font-weight:400">a month — about 108 hours a year</span></td></tr>
-            </tbody>
-          </table>
-          <p class="also"><b>And the next sale.</b> All 60 now have a relationship with you from day one — and sit in your customer list with what they bought, ready for “time for a refill” when it is.</p>
-        </div>
+      <div class="example calc reveal">
+        <table>
+          <thead><tr><th>Job</th><th>Before SkySale</th><th>With SkySale</th><th class="h">Back</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Automatic audit</b></td>
+              <td>Logging in to three merchant websites every day to check each batch report against the POS<div class="sum-line">30 min a day × 30 days = <b>15 h</b></div></td>
+              <td>Reading each studio’s morning result, and opening the odd flagged day<div class="sum-line">3 studios × (1 min a day + 2 flagged days × 10 min) = <b>2.4 h</b></div></td>
+              <td class="h">12.6 h</td>
+            </tr>
+            <tr>
+              <td><b>Commission payroll</b></td>
+              <td>Exporting every studio’s sales and tracking each employee’s transactions across all three<div class="sum-line">7 h a payday × 2 paydays = <b>14 h</b></div></td>
+              <td>Every employee’s sales across all three studios in one screen — review it and mark it paid<div class="sum-line">30 min a payday × 2 paydays = <b>1 h</b></div></td>
+              <td class="h">13 h</td>
+            </tr>
+            <tr>
+              <td><b>Welcome emails</b></td>
+              <td>Writing a personal follow-up for every new customer at three studios<div class="sum-line">60 new customers × 10 min × 3 studios = <b>30 h</b></div></td>
+              <td>Each email already written from what they bought — read it and send<div class="sum-line">60 new customers × 1 min × 3 studios = <b>3 h</b></div></td>
+              <td class="h">27 h</td>
+            </tr>
+            <tr class="sum"><td>A month</td><td>59 h</td><td>6.4 h</td><td class="h">52.6 h</td></tr>
+          </tbody>
+        </table>
       </div>
-
       <div class="total-saved reveal">
-        <div><b class="credit">23.7 h</b><span>a month back for a shop doing all three — about three working days</span></div>
-        <div><b>≈ $590</b><span>of someone’s time a month, at $25 an hour</span></div>
-        <div><b>$115</b><span>a month for SkySale, per location</span></div>
+        <div><b class="credit">52.6 hours</b><span>a month back — about six and a half working days, or 630 hours a year</span></div>
+        <div><b>≈ $1,315</b><span>of staff time a month, at $25 an hour</span></div>
+        <div><b>$345</b><span>a month for SkySale — $115 for each of the three studios</span></div>
       </div>
-      <p class="fineprint">These are worked examples, not results reported by customers. The hours come from the assumptions written beside them; your own depend on your shop — swap in your numbers and the arithmetic still holds.</p>
-    </div>
-  </section>
-
-  <!-- ── The pinned paycheck ─────────────────────────────────────────── -->
-  <section class="pin rule-top">
-    <div class="wrap pin-inner">
-      <div class="pin-copy">
-        <p class="eyebrow">The same sale, all the way through</p>
-        <h2>Rung up once. Counted everywhere.</h2>
-        <p class="lede pin-note">
-          One sale at the till becomes a line on a paycheck, a figure in the day's
-          reconciliation and an email to the customer — without anyone re-typing it
-          anywhere. Every line on this cheque was worked out on its own: which month a
-          return belongs to, whether a dispute is money lost or money held, what last
-          payday left behind.
-        </p>
-      </div>
-
-      <div class="cheque hero-art">
-        <div class="cheque-head">
-          <div><span>Pay period</span><b>Sep 1 – Sep 15</b></div>
-          <div><span>Payday</span><b>Oct 1</b></div>
-          <div><span>Covering</span><b>Every location</b></div>
-        </div>
-
-        <dl style="margin:0">
-          <div class="cheque-line pin-line">
-            <dt>Net sales</dt>
-            <dd class="credit">$48,210.00</dd>
-          </div>
-          <div class="cheque-line pin-line">
-            <dt>Return on receipt 1081<small>Sold in August — counted to August</small></dt>
-            <dd class="debit">−$2,000.00</dd>
-          </div>
-          <div class="cheque-line pin-line">
-            <dt>Commission at 8%</dt>
-            <dd>$3,696.80</dd>
-          </div>
-          <div class="cheque-line pin-line">
-            <dt>Dispute held, receipt 1104<small>Held, not lost — released if it's won</small></dt>
-            <dd class="debit">−$216.38</dd>
-          </div>
-          <div class="cheque-line pin-line">
-            <dt>Carried from Sep 15<small>That cheque closed below zero</small></dt>
-            <dd class="debit">−$84.12</dd>
-          </div>
-        </dl>
-
-        <div class="cheque-total pin-total">
-          <span>Net pay</span>
-          <b>$3,396.30</b>
-        </div>
-        <p class="cheque-note">An example, not real payroll. Every line opens onto the receipts behind it.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── The four ────────────────────────────────────────────────────── -->
-  <section class="rule-top">
-    <div class="wrap">
-      <div class="sec-head narrow reveal">
-        <p class="eyebrow">What it does</p>
-        <h2>One login instead of four systems and a spreadsheet.</h2>
-        <p class="lede">
-          Most shops run a register, a payroll spreadsheet, a mail tool and a booking
-          page, then spend the end of every month making them agree. These four already
-          agree, because they are the same product reading the same sale.
-        </p>
-      </div>
-
-      <div class="cards stagger">
-        <a class="card" href="reconciliation.html">
-          <span class="eyebrow">01 — Automatic audit</span>
-          <h3>It checks itself, every morning</h3>
-          <p>
-            Your card sales against the processor's own batch, day by day, without anyone
-            asking for it. A day that doesn't balance says by how much and which way round.
-          </p>
-          <span class="more">See the audit</span>
-        </a>
-        <a class="card" href="payroll.html">
-          <span class="eyebrow">02 — Pay transparency</span>
-          <h3>Commission, correct — and shown</h3>
-          <p>
-            Per-person plans on your own schedule. Returns, disputes and shortfalls
-            land on the right cheque, and every person can see how theirs was built.
-          </p>
-          <span class="more">How it works</span>
-        </a>
-        <a class="card" href="follow-up.html">
-          <span class="eyebrow">03 — Welcome emails</span>
-          <h3>The email writes itself</h3>
-          <p>
-            A receipt as the sale closes, and a welcome note built from the
-            products on it. Then write to any group you can describe.
-          </p>
-          <span class="more">What gets sent</span>
-        </a>
-        <a class="card" href="bookings.html">
-          <span class="eyebrow">04 — Bookings</span>
-          <h3>A calendar customers use</h3>
-          <p>
-            Sessions book against your real opening hours, and the customer can
-            move or cancel one from their own email.
-          </p>
-          <span class="more">Open the calendar</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── The rules ───────────────────────────────────────────────────── -->
-  <section class="rule-top">
-    <div class="wrap">
-      <div class="sec-head narrow reveal">
-        <p class="eyebrow">The hard parts</p>
-        <h2>The rules that cost you money when software ignores them.</h2>
-        <p class="lede">
-          Not settings to configure. This is how it already behaves, because
-          each one was a real mistake somebody paid for first.
-        </p>
-      </div>
-
-      <dl class="spec stagger">
-        <div class="spec-row">
-          <dt>A return counts against the day the item sold</dt>
-          <dd>Not the day the money went back. An August sale refunded in September belongs to August, so it comes off the commission it actually paid.</dd>
-        </div>
-        <div class="spec-row">
-          <dt>A chargeback is held, not lost</dt>
-          <dd>Money in dispute is withheld from the open cheque and remembered, so it can't be taken twice. Win it and it's released; lose it and it stays gone.</dd>
-        </div>
-        <div class="spec-row">
-          <dt>A negative cheque carries forward</dt>
-          <dd>A cheque below zero pays nothing, and the shortfall moves to the very next payday as one carried line — not by repeating every deduction behind it.</dd>
-        </div>
-        <div class="spec-row">
-          <dt>One person, one paycheck, across every location</dt>
-          <dd>Staff who work at more than one shop have a record at each and a single cheque, judged on the combined total.</dd>
-        </div>
-        <div class="spec-row">
-          <dt>The day ends when your shop closes</dt>
-          <dd>Not at midnight on a server in another timezone. Every report and pay period is read on your own clock, so the evening's sales land in the day you rang them up.</dd>
-        </div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- ── Who ─────────────────────────────────────────────────────────── -->
-  <section class="rule-top">
-    <div class="wrap">
-      <div class="sec-head narrow reveal">
-        <p class="eyebrow">Who it's for</p>
-        <h2>Where the average sale is large and the staff are shared.</h2>
-        <p class="lede">
-          Medical spas, skincare and wellness studios, device and equipment
-          retailers — anywhere a commissioned team sells considered, high-value
-          products, and getting their pay right matters more than shaving a
-          second off checkout.
-        </p>
-      </div>
-      <div class="stats reveal">
-        <div class="stat"><b>Every morning</b><span>your processor checked against the till, without being asked</span></div>
-        <div class="stat"><b>Any number</b><span>of locations, one roster, one paycheck per person</span></div>
-        <div class="stat"><b>3 roles</b><span>staff see their own figures, managers see everyone's</span></div>
-        <div class="stat"><b>Your schedule</b><span>semi-monthly, fortnightly, or whatever your paydays are</span></div>
-        <div class="stat"><b>Your history</b><span>imported from the system you're leaving, whatever shape it's in</span></div>
-      </div>
+      <p class="fineprint">
+        A SkySale customer. The times before SkySale are the studio’s own; the times with it are the studio’s
+        experience too. The batch check is counted every day of the month (30), and new customers at 60 a
+        month per studio. Your shop’s numbers will be its own.
+      </p>
     </div>
   </section>
 

@@ -441,3 +441,90 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
   .example { padding: 20px 18px; }
   .example th.h, .example td.h { padding-left: 8px; }
 }
+
+/* ── A customer, worked through ───────────────────────────────────────────
+ * Each job is a bar as long as the hours it used to take, shrinking to the
+ * hours it takes now. At rest — no scroll-driven animation, or less motion
+ * asked for — the bars simply show both: a faint outline for before, the
+ * solid bar for now. */
+.story { padding-block: clamp(64px, 11vh, 132px); border-top: 1px solid var(--line-soft); }
+.story-inner { display: grid; gap: 24px; }
+.story-head h2 em { font-style: normal; color: var(--credit); }
+.story-head .lede { margin-top: 16px; }
+.story-rows { display: grid; gap: 12px; }
+/* Fixed columns, so every bar is drawn against the same track and the
+   lengths can be compared from one job to the next. */
+.srow {
+  display: grid; grid-template-columns: minmax(200px, 1fr) minmax(220px, 1.3fr) 11rem; gap: 18px; align-items: center;
+  border: 1px solid var(--line); background: var(--panel); border-radius: 16px; padding: 16px 22px; color: inherit; text-decoration: none;
+}
+.srow:hover { border-color: var(--blue); }
+.srow-label b { display: block; font-size: 1.05rem; margin-bottom: 4px; }
+.srow-label span { font-size: .88rem; color: var(--ink-dim); line-height: 1.45; }
+.srow-bar { position: relative; height: 14px; }
+.srow-bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; }
+.srow-bar .ghost { width: var(--before); border: 1.5px dashed var(--ink-faint); }
+.srow-bar .fill { width: var(--after); background: var(--blue); }
+.srow-nums { font-family: var(--mono); white-space: nowrap; text-align: right; }
+.srow-nums .was { color: var(--ink-faint); text-decoration: line-through; }
+.srow-nums .arrow { color: var(--ink-faint); margin: 0 8px; }
+.srow-nums .now { color: var(--ink); }
+.srow-nums .saved { display: block; margin-top: 4px; color: var(--credit); font-weight: 500; font-size: 1.15rem; }
+.story-total {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 2px;
+  background: var(--line-soft); border: 1px solid var(--line-soft); border-radius: 16px; overflow: hidden;
+}
+.story-total div { background: var(--void); padding: 16px 22px; }
+.story-total span { display: block; font-size: .85rem; color: var(--ink-dim); margin-bottom: 6px; }
+.story-total b { font-family: var(--mono); font-size: 1.6rem; font-weight: 500; letter-spacing: -.03em; }
+.story-total b.was { color: var(--ink-faint); }
+.story-total b.credit { color: var(--credit); }
+.example.calc td { font-size: .88rem; }
+.example.calc .sum-line { margin-top: 4px; font-family: var(--mono); font-size: .78rem; color: var(--ink-faint); }
+.example.calc .sum-line b { color: var(--ink); font-weight: 500; white-space: nowrap; }
+@media (max-width: 760px) {
+  .srow { grid-template-columns: 1fr; gap: 12px; }
+  .srow-nums { text-align: left; }
+  .example.calc thead { display: none; }
+  .example.calc tr { display: block; padding: 10px 0; border-bottom: 1px solid var(--line-soft); }
+  .example.calc td { display: block; border: none; padding: 4px 0; text-align: left !important; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* Tall, so the breakdown can play out while it stays on screen. */
+    .story { height: 360vh; padding-block: 0; view-timeline-name: --story; border-top: 1px solid var(--line-soft); }
+    .story-inner { position: sticky; top: 0; min-height: 100vh; padding-block: 84px 24px; align-content: center; }
+    /* Pinned, the whole picture has to fit on the screen. On shorter ones the
+       introduction gives way — the headline already says what this is. */
+    @media (max-height: 860px) {
+      .story-head .lede { display: none; }
+      .story-head h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+    }
+    @media (max-height: 700px) {
+      .srow-label span { display: none; }
+    }
+
+    .srow, .srow .fill, .srow .saved, .srow .now, .story-total {
+      animation-timeline: --story; animation-fill-mode: both; animation-timing-function: linear;
+    }
+    .srow { animation-name: row-in; }
+    .srow .fill { animation-name: shrink; }
+    .srow .now, .srow .saved { animation-name: fade-in; }
+    .story-total { animation-name: row-in; animation-range: contain 82% contain 94%; }
+    @keyframes row-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @keyframes shrink { from { width: var(--before); background: var(--ink-faint); } to { width: var(--after); background: var(--blue); } }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Each job gets its own stretch of the scroll: in, shrink, then the hours back. */
+    .srow:nth-child(1)               { animation-range: contain  0% contain  8%; }
+    .srow:nth-child(1) .fill         { animation-range: contain  8% contain 20%; }
+    .srow:nth-child(1) :is(.now, .saved) { animation-range: contain 18% contain 24%; }
+    .srow:nth-child(2)               { animation-range: contain 26% contain 34%; }
+    .srow:nth-child(2) .fill         { animation-range: contain 34% contain 46%; }
+    .srow:nth-child(2) :is(.now, .saved) { animation-range: contain 44% contain 50%; }
+    .srow:nth-child(3)               { animation-range: contain 52% contain 60%; }
+    .srow:nth-child(3) .fill         { animation-range: contain 60% contain 74%; }
+    .srow:nth-child(3) :is(.now, .saved) { animation-range: contain 72% contain 78%; }
+  }
+}
