@@ -384,3 +384,60 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
   .legal td { border-bottom: none; padding: 2px 0; }
   .legal tr { border-bottom: 1px solid var(--line-soft); padding: 10px 0; }
 }
+
+/* ── The extra mile, and what it saves ────────────────────────────────────
+ * Three columns comparing what any register does with what this one does
+ * next, then worked examples of the time that saves. The hours are figures,
+ * so they get the mono face; time saved is the one figure shown in credit
+ * green, because it is the point of the page. */
+.miles { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; }
+.mile {
+  border: 1px solid var(--line); background: var(--panel); border-radius: 18px;
+  padding: 28px 26px; display: flex; flex-direction: column;
+}
+.mile h3 { margin: 12px 0 14px; }
+.mile .vs { font-size: .95rem; line-height: 1.55; color: var(--ink-dim); }
+.mile .vs + .vs { margin-top: 10px; }
+.mile .vs b { color: var(--ink-faint); font-weight: 600; }
+.mile .vs.ours b { color: var(--blue); }
+.mile .vs.ours { color: var(--ink); }
+.mile .saves {
+  margin-top: auto; padding-top: 22px; border-top: 1px solid var(--line-soft);
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+}
+.mile .saves b { font-family: var(--mono); font-size: 1.6rem; font-weight: 500; letter-spacing: -.03em; color: var(--credit); }
+.mile .saves span { font-size: .82rem; color: var(--ink-faint); text-align: right; }
+.mile .more { margin-top: 16px; font-size: .9rem; font-weight: 600; color: var(--blue); }
+.mile .more::after { content: ' →'; }
+
+.examples { display: grid; gap: 22px; }
+.example {
+  border: 1px solid var(--line); background: var(--panel); border-radius: 18px; padding: 26px 26px 22px;
+}
+.example .who { font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.example h3 { margin: 10px 0 6px; }
+.example .setup { font-size: .95rem; color: var(--ink-dim); margin-bottom: 16px; }
+.example table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.example th, .example td { text-align: left; padding: 9px 0; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+.example th { font-size: .72rem; font-family: var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+.example td { color: var(--ink-dim); padding-right: 14px; }
+.example td.h, .example th.h { text-align: right; font-family: var(--mono); white-space: nowrap; color: var(--ink); padding-right: 0; padding-left: 14px; }
+.example tr.sum td { border-bottom: none; padding-top: 14px; font-weight: 600; color: var(--ink); }
+.example tr.sum td.h { color: var(--credit); font-size: 1.15rem; }
+.example .also { margin-top: 14px; font-size: .9rem; color: var(--ink-dim); }
+.example .also b { color: var(--ink); }
+
+.total-saved {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px;
+  background: var(--line-soft); border: 1px solid var(--line-soft); border-radius: 16px; overflow: hidden; margin-top: 22px;
+}
+.total-saved div { background: var(--void); padding: 24px 24px; }
+.total-saved b { display: block; font-family: var(--mono); font-size: 1.7rem; font-weight: 500; letter-spacing: -.03em; margin-bottom: 6px; }
+.total-saved b.credit { color: var(--credit); }
+.total-saved span { font-size: .88rem; color: var(--ink-dim); }
+.fineprint { font-size: .85rem; color: var(--ink-faint); margin-top: 16px; max-width: 70ch; line-height: 1.55; }
+
+@media (max-width: 640px) {
+  .example { padding: 20px 18px; }
+  .example th.h, .example td.h { padding-left: 8px; }
+}
