@@ -342,3 +342,45 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
        leave the section looking empty to anyone landing part-way down. */
   }
 }
+
+/* ── Legal pages ──────────────────────────────────────────────────────────
+ * Terms and Privacy are read, not skimmed, so they drop the marketing scale
+ * for a calmer reading size, with an "in short" box up top and numbered
+ * sections that can be linked to one by one. */
+.legal { padding-block: 40px 80px; }
+.legal .summary {
+  border: 1px solid var(--line); background: var(--panel); border-radius: 14px;
+  padding: 22px 26px; margin-bottom: 36px;
+}
+.legal .summary h2 { font-size: 1.05rem; margin: 0 0 10px; letter-spacing: 0; }
+.legal .summary ul { margin: 0; }
+.legal .toc { margin-bottom: 8px; }
+.legal .toc ol { columns: 2; column-gap: 64px; margin: 10px 0 0; padding-left: 1.3em; }
+.legal .toc li { break-inside: avoid; }
+.legal .toc a { color: var(--ink-dim); text-decoration: none; }
+.legal .toc a:hover { color: var(--blue); }
+.legal h2 {
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem); letter-spacing: -.015em;
+  margin: 48px 0 12px; scroll-margin-top: 96px;
+}
+.legal h3 { font-size: 1.02rem; letter-spacing: 0; margin: 22px 0 8px; }
+.legal p, .legal li { color: var(--ink-dim); font-size: 1rem; line-height: 1.68; }
+.legal p + p, .legal ul + p, .legal p + ul { margin-top: 12px; }
+.legal ul, .legal ol { padding-left: 1.3em; margin: 10px 0; }
+.legal li + li { margin-top: 6px; }
+.legal strong { color: var(--ink); font-weight: 600; }
+.legal a { color: var(--blue); }
+.legal .caps { text-transform: uppercase; font-size: .93rem; letter-spacing: .01em; }
+.legal .meta { font-family: var(--mono); font-size: .78rem; color: var(--ink-faint); margin-top: 18px; }
+.legal table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .95rem; }
+.legal th, .legal td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line-soft); color: var(--ink-dim); }
+.legal th { color: var(--ink); font-weight: 600; font-size: .85rem; }
+.legal td:first-child { color: var(--ink); white-space: nowrap; }
+@media (max-width: 640px) {
+  .legal .toc ol { columns: 1; }
+  .legal td:first-child { white-space: normal; }
+  .legal table, .legal thead, .legal tbody, .legal tr, .legal th, .legal td { display: block; }
+  .legal thead { display: none; }
+  .legal td { border-bottom: none; padding: 2px 0; }
+  .legal tr { border-bottom: 1px solid var(--line-soft); padding: 10px 0; }
+}
