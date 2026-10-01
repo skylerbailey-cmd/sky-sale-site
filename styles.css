@@ -99,6 +99,19 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
   }
   nav .signin:hover { border-color: var(--blue); color: var(--blue); }
 }
+/* On a phone both buttons share one line with the logo; let them wrap and
+   the masthead doubles in height and sits over the page. */
+@media (max-width: 480px) {
+  .masthead { gap: 10px; padding-block: 10px; }
+  .masthead nav { flex-wrap: nowrap; gap: 8px; }
+  nav .signin { padding: 0 14px; min-height: 40px; font-size: .86rem; }
+  .masthead .btn-sm { padding: 10px 14px; font-size: .86rem; }
+}
+@media (max-width: 360px) {
+  .logo { font-size: 1.05rem; }
+  nav .signin { padding: 0 11px; }
+  .masthead .btn-sm { padding: 10px 11px; font-size: .8rem; }
+}
 
 .btn {
   display: inline-block; font-family: var(--display); font-weight: 600;
@@ -286,6 +299,40 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
       to { opacity: .15; transform: translateY(-40px) scale(.96); }
     }
 
+    /* The extra mile: each card rises in turn, then plays its own argument —
+       what any POS does, what this one does instead, and the hours that
+       gives back — as it comes up the screen. */
+    .mile { view-timeline: --mile block; }
+    .mile, .mile .vs, .mile .vs.ours, .mile .saves b, .mile .saves span, .mile .more {
+      animation-timeline: --mile; animation-fill-mode: both; animation-timing-function: linear;
+    }
+    .mile             { animation-name: card-in;  animation-range: entry 0% cover 24%; }
+    .mile .vs         { animation-name: dim-in;   animation-range: cover 10% cover 24%; }
+    .mile .vs.ours    { animation-name: slide-in; animation-range: cover 18% cover 32%; }
+    .mile .saves b    { animation-name: pop;      animation-range: cover 26% cover 38%; }
+    .mile .saves span { animation-name: dim-in;   animation-range: cover 30% cover 40%; }
+    .mile .more       { animation-name: dim-in;   animation-range: cover 34% cover 42%; }
+    /* Side by side, they take turns instead of arriving together. */
+    @media (min-width: 960px) {
+      .mile:nth-child(2)             { animation-range: entry 30% cover 30%; }
+      .mile:nth-child(2) .vs         { animation-range: cover 18% cover 30%; }
+      .mile:nth-child(2) .vs.ours    { animation-range: cover 26% cover 38%; }
+      .mile:nth-child(2) .saves b    { animation-range: cover 34% cover 44%; }
+      .mile:nth-child(2) .saves span { animation-range: cover 38% cover 46%; }
+      .mile:nth-child(2) .more       { animation-range: cover 40% cover 48%; }
+      .mile:nth-child(3)             { animation-range: entry 60% cover 36%; }
+      .mile:nth-child(3) .vs         { animation-range: cover 26% cover 36%; }
+      .mile:nth-child(3) .vs.ours    { animation-range: cover 34% cover 44%; }
+      .mile:nth-child(3) .saves b    { animation-range: cover 42% cover 50%; }
+      .mile:nth-child(3) .saves span { animation-range: cover 44% cover 52%; }
+      .mile:nth-child(3) .more       { animation-range: cover 46% cover 54%; }
+    }
+    @keyframes card-in  { from { opacity: 0; transform: translateY(60px) scale(.94); } to { opacity: 1; transform: none; } }
+    @keyframes dim-in   { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slide-in { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
+    @keyframes pop      { from { opacity: 0; transform: scale(.5); } 70% { transform: scale(1.12); } to { opacity: 1; transform: none; } }
+    .mile .saves b { display: inline-block; transform-origin: left center; }
+
     /* A staggered set — cards, spec rows. */
     .stagger > * {
       animation: rise linear both;
@@ -451,19 +498,13 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
 .story-head h2 em { font-style: normal; color: var(--credit); }
 .story-head .lede { margin-top: 16px; }
 .story-rows { display: grid; gap: 12px; }
-/* Fixed columns, so every bar is drawn against the same track and the
-   lengths can be compared from one job to the next. */
 .srow {
-  display: grid; grid-template-columns: minmax(200px, 1fr) minmax(220px, 1.3fr) 11rem; gap: 18px; align-items: center;
+  display: grid; grid-template-columns: 1fr 11rem; gap: 18px; align-items: center;
   border: 1px solid var(--line); background: var(--panel); border-radius: 16px; padding: 16px 22px; color: inherit; text-decoration: none;
 }
 .srow:hover { border-color: var(--blue); }
 .srow-label b { display: block; font-size: 1.05rem; margin-bottom: 4px; }
 .srow-label span { font-size: .88rem; color: var(--ink-dim); line-height: 1.45; }
-.srow-bar { position: relative; height: 14px; }
-.srow-bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; }
-.srow-bar .ghost { width: var(--before); border: 1.5px dashed var(--ink-faint); }
-.srow-bar .fill { width: var(--after); background: var(--blue); }
 .srow-nums { font-family: var(--mono); white-space: nowrap; text-align: right; }
 .srow-nums .was { color: var(--ink-faint); text-decoration: line-through; }
 .srow-nums .arrow { color: var(--ink-faint); margin: 0 8px; }
@@ -489,3 +530,10 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
   .example.calc td { display: block; border: none; padding: 4px 0; text-align: left !important; }
 }
 
+
+/* On a phone the footer is the only way to the feature pages (the masthead
+   hides them), so its links get finger-sized targets. */
+@media (max-width: 860px) {
+  footer nav { gap: 0 20px; }
+  footer nav a { display: inline-block; padding-block: 11px; }
+}
