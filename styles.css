@@ -537,3 +537,33 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
   footer nav { gap: 0 20px; }
   footer nav a { display: inline-block; padding-block: 11px; }
 }
+
+
+/* ── The free trial ──────────────────────────────────────────────────────── */
+.trial-note { margin-top: 14px; font-size: .9rem; color: var(--ink-dim); }
+.trial-note a { color: var(--blue); }
+.trial-steps {
+  list-style: none; padding: 0; margin: 8px 0 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px;
+}
+.trial-steps li {
+  border: 1px solid var(--line); background: var(--panel); border-radius: 18px; padding: 24px 22px;
+}
+.trial-steps .n {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 50%; background: var(--blue-glow);
+  color: var(--blue); font-family: var(--mono); font-weight: 600;
+}
+.trial-steps h3 { margin: 14px 0 8px; font-size: 1.08rem; }
+.trial-steps p { color: var(--ink-dim); font-size: .94rem; line-height: 1.55; }
+.trial-steps .opt-tag {
+  font-family: var(--mono); font-size: .68rem; font-weight: 500; color: var(--ink-faint);
+  border: 1px solid var(--line); border-radius: 999px; padding: 1px 7px; margin-left: 4px; vertical-align: 2px;
+}
+.trial-terms {
+  margin-top: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px;
+  background: var(--line-soft); border: 1px solid var(--line-soft); border-radius: 16px; overflow: hidden;
+}
+.trial-terms div { background: var(--void); padding: 18px 22px; }
+.trial-terms b { display: block; font-family: var(--mono); font-size: 1.7rem; font-weight: 500; letter-spacing: -.03em; color: var(--credit); }
+.trial-terms span { font-size: .88rem; color: var(--ink-dim); }
