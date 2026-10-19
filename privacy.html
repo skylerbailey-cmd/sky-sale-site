@@ -35,7 +35,7 @@
       <p class="eyebrow">Privacy Policy</p>
       <h1>What we hold, and what we do with it.</h1>
       <p class="lede">How GRND Labs LLC handles information in SkySale — what a shop records, who else touches it, and when it is deleted.</p>
-      <p class="meta">Effective 1 October 2026 · last updated 15 October 2026</p>
+      <p class="meta">Effective 1 October 2026 · last updated 19 October 2026</p>
     </div>
   </section>
 
@@ -87,8 +87,13 @@
         <li><strong>Products, treatments, availability and bookings.</strong></li>
         <li><strong>Billing:</strong> your subscription plan and status. Card details for your SkySale
         subscription are entered on Stripe's page and held by Stripe, not by us.</li>
-        <li><strong>Connections you choose to make:</strong> tokens for your Gmail account and for your
-        payment processor (Maverick or Payarc), and the settlement records we read with them.</li>
+        <li><strong>Connections you choose to make:</strong> tokens for your Gmail account, and the keys for
+        your payment processor or gateway (Maverick, Payarc, Authorize.Net, NMI — including gateways built on
+        it, such as Easy Pay Direct's — or USAePay), and the settlement and chargeback records we read with them,
+        which can include the last four digits of a card.</li>
+        <li><strong>The SkySale app:</strong> if you turn on notifications, the push token Apple issues for
+        that device and which notifications you chose. It is used only to send those notifications, and is
+        deleted when Apple tells us it is no longer valid or the account is closed.</li>
         <li><strong>What you send us:</strong> questions asked in the help chat, feature requests (with the
         name you give and your account's email address), and emails to support.</li>
       </ul>
@@ -106,7 +111,8 @@
       <h3>Automatically</h3>
       <ul>
         <li><strong>Cookies and similar storage</strong> that keep you signed in (a session cookie lasting up
-        to 30 days) and remember preferences such as the company you last used. We use no advertising or
+        to 30 days, and a signed cookie that remembers which shop you signed in to for up to a year, until you
+        sign out) and remember preferences such as the company you last used. We use no advertising or
         analytics cookies, and this website loads no trackers.</li>
         <li><strong>Server logs</strong> kept by our hosting providers — such as IP address, browser and the
         pages requested — used for security and troubleshooting.</li>
@@ -134,6 +140,8 @@
         <li><strong>Help chat:</strong> the questions you type and the conversation so far.</li>
         <li><strong>Product set-up:</strong> the text of a supplier web page you ask us to read, and a
         product's name, brand and description, to write descriptions and usage notes.</li>
+        <li><strong>Welcome email review:</strong> the shop's own products' names, brands, descriptions,
+        benefits and usage notes, to suggest clearer wording.</li>
       </ul>
       <p>We send only what the feature needs. Anthropic processes it to return a response to us under its
       commercial terms, which do not permit it to train its models on this data. We do not use your data to
@@ -168,7 +176,8 @@
           <tr><td>Resend</td><td>Delivering sign-in links and other email we send</td></tr>
           <tr><td>Anthropic</td><td>The AI features described in Section 5</td></tr>
           <tr><td>Google</td><td>Gmail, only if a shop connects it</td></tr>
-          <tr><td>Maverick Payments, Payarc</td><td>Reading settlement records, only if a shop connects its processor</td></tr>
+          <tr><td>Maverick Payments, Payarc, Authorize.Net, NMI and gateways built on it, USAePay</td><td>Reading settlement and chargeback records, only if a shop connects its processor or gateway</td></tr>
+          <tr><td>Apple</td><td>Delivering push notifications to the SkySale app, and the App Store</td></tr>
           <tr><td>Mobile carriers</td><td>Delivering sale and audit alerts to the phone numbers a shop adds</td></tr>
         </tbody>
       </table>
@@ -197,7 +206,7 @@
 
       <p>Signing in uses a one-time link sent to the shop's own address, so there is no password to reuse or
       leak. Money screens are behind each employee's PIN, and sensitive actions need a manager's code.
-      Traffic is encrypted in transit. Mailbox (Gmail) and card-processor access tokens are encrypted at rest,
+      Traffic is encrypted in transit. Mailbox (Gmail) tokens and card-processor and gateway keys are encrypted at rest,
       with a key kept separately from the database, and are never shown back. No system is perfectly secure; if you find a problem, write to
       <a href="mailto:security@sky-sale.com">security@sky-sale.com</a>. If a breach affects your information,
       we will tell you as the law requires.</p>
