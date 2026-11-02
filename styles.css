@@ -567,3 +567,8 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
 .trial-terms div { background: var(--void); padding: 18px 22px; }
 .trial-terms b { display: block; font-family: var(--mono); font-size: 1.7rem; font-weight: 500; letter-spacing: -.03em; color: var(--credit); }
 .trial-terms span { font-size: .88rem; color: var(--ink-dim); }
+
+/* WhatsApp support: under the closing call to action, and in every footer. */
+.support-note { margin-top: 22px; max-width: 46em; font-size: .95rem; color: var(--ink-dim); line-height: 1.55; }
+.support-note a, .foot-support a { color: var(--blue); white-space: nowrap; }
+.foot-support { margin-top: 6px; }
