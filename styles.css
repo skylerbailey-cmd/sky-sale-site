@@ -572,3 +572,10 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
 .support-note { margin-top: 22px; max-width: 46em; font-size: .95rem; color: var(--ink-dim); line-height: 1.55; }
 .support-note a, .foot-support a { color: var(--blue); white-space: nowrap; }
 .foot-support { margin-top: 6px; }
+
+/* The app section: plain cards, not links. */
+.app-features .mile p { color: var(--ink-dim); line-height: 1.6; margin: 0; }
+.app-features .mile h3 { margin: 0 0 10px; }
+.app-features .card:hover { transform: none; border-color: var(--line); background: var(--panel); }
+.app-cta { align-items: center; margin-top: 26px; }
+.app-note { font-size: .9rem; color: var(--ink-faint); }
