@@ -49,6 +49,7 @@
           <li>For a shop's customers and staff, the shop is in charge and we act for it.</li>
           <li>We never see full card numbers, never sell data, show no ads, and this website has no trackers.</li>
           <li>Some features use AI from Anthropic. It isn't allowed to train on what we send.</li>
+          <li>If a shop connects another app or AI tool to SkySale, we send that app what the shop allows it to read. The shop chooses the app.</li>
           <li>A cancelled shop's data is deleted 30 days after its subscription ends, with an email a week before. Closing the account deletes it at once.</li></ul>
         <p style="margin-top:12px;font-size:.9rem">This summary is here to help; the full text below is what applies.</p>
       </div>
@@ -99,6 +100,9 @@
         <li><strong>The SkySale app:</strong> if you turn on notifications, the push token Apple issues for
         that device and which notifications you chose. It is used only to send those notifications, and is
         deleted when Apple tells us it is no longer valid or the account is closed.</li>
+        <li><strong>Connections a shop sets up:</strong> the name and permissions of each API key (we keep only
+        a one-way fingerprint of the key itself, never the key), the web addresses its webhooks send to, their
+        signing secrets (encrypted), and a log of each webhook delivery, including a copy of what was sent.</li>
         <li><strong>What you send us:</strong> questions asked in the help chat, feature requests (with the
         name you give and your account's email address), and emails to support.</li>
       </ul>
@@ -193,6 +197,16 @@
       <p>We may also disclose information when the law requires it, to protect the rights, safety or property of
       our users or others, or as part of a merger, acquisition or sale of assets, in which case this policy
       will continue to apply to it.</p>
+      <h3>Apps a shop connects</h3>
+      <p>A shop's owner can connect other apps to SkySale: AI assistants such as Claude, and automation tools
+      such as n8n, Zapier or Make. They can do this with an API key, a connection for AI assistants (MCP), or webhooks that send each new
+      sale, customer or appointment to an address the shop gives us. When they do, we send that app the
+      information the shop has allowed it to read, which can include sales, returns, products, appointments and
+      customers' names, email addresses, phone numbers, addresses, birthdays, notes and purchase history. These
+      apps are chosen by the shop, not by us, and handle the information under their own terms. They are not
+      our service providers. Connections can only read: they cannot ring up a sale, refund or change anything
+      in SkySale. They never receive card numbers, not even the last four digits, or photos attached to a sale. Only the shop's owner, with an
+      admin name and PIN, can set one up, and they can turn it off at any time.</p>
 
       <h2 id="how-long-we-keep-it">8. How long we keep it</h2>
 
@@ -205,6 +219,8 @@
         before, and never delete sooner than seven days after that email.</li>
         <li><strong>Closing the account</strong> in Settings → Account deletes it and everything in it
         immediately.</li>
+        <li><strong>Webhook delivery logs</strong> are deleted after 30 days. A shop's API keys, webhooks and
+        their logs are deleted when the account is.</li>
         <li><strong>Photos on a sale</strong> are kept with the sale. They are deleted when a manager removes
         one, when the sale is deleted, or when the account is.</li>
         <li>Once deleted, information is removed from our database and cannot be restored by us. Stripe keeps
