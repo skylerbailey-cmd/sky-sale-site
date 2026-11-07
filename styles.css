@@ -586,3 +586,12 @@ footer { border-top: 1px solid var(--line-soft); padding-block: 40px 56px; font-
 .app-qr figcaption { margin: 0; max-width: 150px; font-size: .86rem; line-height: 1.45; color: var(--ink-dim); }
 @media (max-width: 760px), (hover: none) and (pointer: coarse) { .app-qr { display: none; } }
 .app-note { font-size: .9rem; color: var(--ink-faint); }
+
+/* ── AI assistants page (ai.html) ──────────────────────────────────────── */
+.ai-figs { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+@media (max-width: 820px) { .ai-figs { grid-template-columns: 1fr; } .ai-figs figure:first-child { max-width: 420px; } }
+.ai-addr code {
+  display: inline-block; font-family: var(--mono); font-size: 1rem; color: var(--ink);
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 16px;
+  user-select: all;
+}
